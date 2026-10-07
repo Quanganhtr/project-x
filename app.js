@@ -95,9 +95,9 @@ const MOMENTS = [
     doing: "Quét QR ăn uống, chuyển tiền cho gia đình, trả điện nước, internet, học phí.",
     feel: "“Ưu đãi ở đâu nhỉ? Hóa đơn này trả chưa?”",
     pain: "Ưu đãi tản mát nhiều nơi. Hóa đơn mỗi cái một chỗ. Chuyển tiền nhiều bước.",
-    opp: ["Chuyển hóa đơn định kỳ về TCB trong 1 phút", "QR có hoàn tiền và U-Point thấy ngay", "Lệnh bằng lời nói hoặc copy số tài khoản"],
+    opp: ["Bật tự động cho hóa đơn đang trả tay qua TCB", "QR có hoàn tiền và U-Point thấy ngay", "Lệnh bằng lời nói hoặc copy số tài khoản"],
     leak: "Hóa đơn, ví điện tử, QR hằng ngày đều gắn với ngân hàng chính.",
-    lever: "Kéo các “mỏ neo” hằng ngày về TCB: hóa đơn, QR, chuyển tiền gia đình.",
+    lever: "Biến thói quen hằng ngày tại TCB thành “mỏ neo”: hóa đơn tự động, QR có lợi, chuyển tiền gia đình nhanh.",
     now: 0.55, next: 0.8,
   },
   {
@@ -204,7 +204,7 @@ const SCREENS = [
     why: "Kế hoạch lương chia toàn bộ lương vào các hũ tại TCB, mỗi hũ một mục đích rõ ràng, và tất cả đều tự sinh lời.",
     tags: [["keep", "Giữ chân lương"], ["auto", "Auto-action"], ["trust", "Trust & transparency"]],
     notes: [
-      "Thanh phân bổ cho thấy cả tháng lương trong một cái nhìn. Con số mặc định dựa trên chi tiêu tháng trước.",
+      "Thanh phân bổ cho thấy cả tháng lương trong một cái nhìn. Lần đầu, khách hàng chọn một mẫu gợi ý hoặc trả lời vài câu hỏi để đặt con số. Các tháng sau dùng lại kế hoạch đã lưu.",
       "Mọi hũ đều tự sinh lời. Tiền chi tiêu vẫn dùng QR, chuyển khoản ngay, không bị khóa.",
       "Lợi ích của kế hoạch nói bằng tiền: lãi dự kiến, U-Point và hoàn tiền khi chi bằng TCB.",
       "Một lần trượt và Face ID cho cả kế hoạch. Tự lặp lại mỗi kỳ lương.",
@@ -274,7 +274,7 @@ const SCREENS = [
     why: "Chuyển tiền bắt đầu từ ý định, không phải từ form. Khách hàng nói hoặc dán, app hiểu và điền sẵn.",
     tags: [["ai", "AI xuyên suốt"], ["ctx", "Contextual"]],
     notes: [
-      "Phát hiện số tài khoản vừa copy từ app khác. Ngân hàng và tên người nhận được nhận diện sẵn.",
+      "Khi khách hàng mở app sau khi copy một số tài khoản, hệ điều hành hỏi quyền dán. Tên người nhận được tra qua Napas như một lần chuyển tiền thường.",
       "Ra lệnh bằng câu tự nhiên, gõ hoặc nói qua Siri: “Chuyển cho mẹ 5tr như tháng trước”.",
       "Người nhận gần đây và quét QR vẫn chỉ cách một chạm.",
     ],
@@ -322,7 +322,7 @@ const SCREENS = [
           </div>
           <div class="trust rel">${P(2)}
             <div class="row"><i class="ri-shield-check-fill"></i>Người nhận quen, đã chuyển 6 lần từ tháng 4</div>
-            <div class="row"><i class="ri-shield-check-fill"></i>Tên tài khoản khớp với danh bạ của bạn</div>
+            <div class="row"><i class="ri-shield-check-fill"></i>Tên tài khoản khớp với người nhận đã lưu</div>
             <div class="row"><i class="ri-shield-check-fill"></i>Không có dấu hiệu lừa đảo</div>
           </div>
         </div>
@@ -359,13 +359,13 @@ const SCREENS = [
   },
   {
     id: "cal", m: 3, name: "Lịch tài chính",
-    keep: "Hóa đơn định kỳ và ví điện tử là “mỏ neo” giữ khách hàng ở ngân hàng chính. Kéo chúng về TCB là cách bền nhất để lương ở lại.",
+    keep: "Hóa đơn tự động là “mỏ neo” giữ khách hàng ở một ngân hàng. Mỗi hóa đơn bật tự động qua TCB là một lý do để lương ở lại đủ trả nó.",
     why: "Một nơi duy nhất cho mọi khoản định kỳ, tính theo kỳ lương chứ không theo tháng dương lịch.",
     tags: [["nav", "Self-service navigation"], ["auto", "Auto-action"]],
     notes: [
       "Lịch đi từ ngày lương đến ngày lương. Chấm màu phân biệt hóa đơn, kỳ thẻ và ưu đãi.",
-      "Hóa đơn được nhận diện từ lịch sử. Trạng thái rõ ràng: đã trích, tự động, cần trả, hoặc chưa liên kết.",
-      "Gợi ý liên kết các hóa đơn định kỳ chưa trả qua TCB, trong một bước, có ưu đãi tháng đầu.",
+      "Hóa đơn được nhận diện từ chính giao dịch tại TCB: thanh toán hóa đơn và chi tiêu bằng thẻ TCB. Trạng thái rõ ràng: đã trích, tự động, trả tay, cần trả.",
+      "Khoản khách hàng trả tay nhiều tháng qua TCB được gợi ý bật tự động. Hóa đơn chưa từng trả qua TCB thì khách hàng tự thêm từ danh sách nhà cung cấp.",
     ],
     html: () => `
       <div class="scr">${sb()}
@@ -391,12 +391,12 @@ const SCREENS = [
             <div class="row sp sm" style="margin-bottom:2px"><b>Sắp tới</b><span class="dim xs">Tổng 6,280,000</span></div>
             <div class="ev"><div class="date">15<small>T5</small></div><div><b class="sm">Thẻ tín dụng</b><div class="xs muted">1,950,000</div></div><span class="st ok">Đã trích</span></div>
             <div class="ev"><div class="date">20<small>T3</small></div><div><b class="sm">Học phí tiếng Anh</b><div class="xs muted">3,200,000</div></div><span class="st due">Cần trả</span></div>
-            <div class="ev"><div class="date">25<small>CN</small></div><div><b class="sm">Điện, nước</b><div class="xs muted">khoảng 650,000</div></div><span class="st auto">Tự động</span></div>
-            <div class="ev" style="border:0"><div class="date">31<small>T7</small></div><div><b class="sm">Netflix, iCloud</b><div class="xs muted">480,000</div></div><span class="st due">Chưa liên kết</span></div>
+            <div class="ev"><div class="date">25<small>CN</small></div><div><b class="sm">Tiền điện EVN</b><div class="xs muted">khoảng 650,000</div></div><span class="st due">Trả tay</span></div>
+            <div class="ev" style="border:0"><div class="date">31<small>T7</small></div><div><b class="sm">Netflix, iCloud</b><div class="xs muted">480,000, qua thẻ TCB</div></div><span class="st auto">Tự động</span></div>
           </div>
           <div class="switch rel" data-go="alert">${P(3)}
-            <div class="row">${im("action-paybills.png")}<div class="grow"><b class="sm">3 hóa đơn chưa liên kết TCB</b><div class="xs" style="color:#3f3f46">Internet, Netflix, iCloud. Liên kết trong 1 phút, x2 U-Point tháng đầu.</div></div></div>
-            <span class="pill k" style="justify-self:start">Liên kết ngay</span>
+            <div class="row">${im("action-paybills.png")}<div class="grow"><b class="sm">Tiền điện EVN: bạn trả tay 3 tháng liền</b><div class="xs" style="color:#3f3f46">Bật tự động thanh toán để không lo trễ hạn, x2 U-Point tháng đầu.</div></div></div>
+            <div class="row" style="gap:6px"><span class="pill k">Bật tự động</span><span class="pill o" style="color:#000">Thêm hóa đơn khác</span></div>
           </div>
         </div>
         ${bb("“Tháng này còn hóa đơn nào?”")}
