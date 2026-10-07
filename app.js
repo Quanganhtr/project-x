@@ -52,7 +52,7 @@ const insightSheet = (v) => {
              <div class="w add" data-go="ai"><img src="${LOGO}" alt="">Thêm insight mới</div>`
           : `<div class="w rel">${P(2)}<div class="t">Có thể chi</div><div class="v">5,0m</div><div class="s">đến 5/11, sau hóa đơn và tiết kiệm</div><span class="icn" style="background:#d9f99d">${im("insight-wallet.png", "")}</span></div>
              <div class="w"><div class="t">Bạn đã chi</div><div class="v">0 <span>/ 4,5m</span></div><div class="s">ngân sách ăn uống, kỳ mới</div><span class="icn" style="background:#fef08a">${im("insight-cash.png", "")}</span></div>
-             <div class="w"><div class="t">Lương ở lại TCB</div><div class="v">84%</div><div class="s">dự kiến sinh lời 58k tháng này</div><span class="icn" style="background:#fecaca">${im("banner-auto-earning-u.png", "")}</span></div>
+             <div class="w"><div class="t">Lương đang sinh lời</div><div class="v">18,5m</div><div class="s">dự kiến +69k tháng này</div><span class="icn" style="background:#fecaca">${im("banner-auto-earning-u.png", "")}</span></div>
              <div class="w add rel" data-go="ai">${P(3, "l")}<img src="${LOGO}" alt="">Thêm insight mới</div>`}
       </div>
       <div class="sheet-acts rel">${P(4, "l")}<span class="pill o">Sửa</span><span class="pill k" data-go="${late ? "insight" : "home"}">Đóng</span></div>
@@ -83,9 +83,9 @@ const MOMENTS = [
     doing: "Chuyển phần lớn sang ngân hàng chính, giữ một khoản tại TCB, gửi tiết kiệm.",
     feel: "“Lại phải chuyển tay từng khoản.”",
     pain: "Với khách hàng: làm lại nhiều lệnh mỗi tháng. Với TCB: lương chỉ đi qua, không ở lại.",
-    opp: ["Kế hoạch lương mặc định giữ lại và sinh lời", "Chỉ chuyển đi phần thật sự cần, có so sánh lợi ích", "Hũ tiết kiệm có lời nhắn cho người thân"],
+    opp: ["Kế hoạch lương mặc định giữ lại và sinh lời", "Mỗi đồng lương có chỗ và tự sinh lời", "Hũ tiết kiệm có lời nhắn cho người thân"],
     leak: "Chuyển phần lớn lương sang ngân hàng chính, chỉ để lại một ít ở TCB.",
-    lever: "Kế hoạch lương ưu tiên giữ lại. Phần chuyển đi được dựa trên nhu cầu thật.",
+    lever: "Kế hoạch lương chia toàn bộ lương vào các hũ tại TCB, tất cả đều sinh lời.",
     now: 0.62, next: 0.9,
   },
   {
@@ -119,9 +119,9 @@ const MOMENTS = [
     doing: "Lướt lịch sử giao dịch, cố đoán tiền đã đi đâu.",
     feel: "“Tháng này mình đã tiêu tiền vào đâu mà hết nhanh như vậy?”",
     pain: "Lịch sử là một danh sách dài. Không trả lời được câu hỏi “tiền đi đâu”.",
-    opp: ["Recap: bạn giữ lại bao nhiêu và nhận lại gì", "AI nói thẳng khoảng mù dữ liệu ở ngân hàng khác", "Gợi ý dẫn tiền tiết kiệm vào hũ tại TCB"],
+    opp: ["Recap: lương đã sinh lời bao nhiêu, nhận lại gì", "AI trả lời tiền đi đâu bằng dữ liệu chi tiêu thật", "Gợi ý dẫn tiền tiết kiệm vào hũ tại TCB"],
     leak: "Không thấy TCB mang lại gì. Tháng sau lặp lại thói quen cũ.",
-    lever: "Ghi nhận con số giữ chân và lợi ích đã nhận, để tháng sau giữ lại nhiều hơn.",
+    lever: "Ghi nhận lợi ích đã nhận bằng tiền thật, để tháng sau tiếp tục.",
     now: 0.3, next: 0.86,
   },
 ];
@@ -131,12 +131,12 @@ const SCREENS = [
   /* ===== 1. Lương về ===== */
   {
     id: "lock", m: 1, name: "Thông báo lương",
-    keep: "Ngày lương là khoảnh khắc quyết định: khách hàng chuyển tiền đi trong vài phút đầu. Thông báo phải cho thấy lợi ích ở lại trước khi họ kịp mở app ngân hàng khác.",
+    keep: "Ngày lương là khoảnh khắc quyết định. Thông báo đầu tiên phải cho thấy ngay lợi ích của việc để lương ở TCB.",
     why: "Ngày lương là lúc khách hàng mở app nhiều nhất. Biến thông báo biến động số dư thành điểm bắt đầu của cả kế hoạch tháng.",
     tags: [["auto", "Auto-action"], ["ctx", "Contextual"]],
     notes: [
       "Widget màn hình khóa cho thấy lương đang tự sinh lời từng ngày. Lợi ích ở lại hiện ngay cả khi chưa mở app.",
-      "Thông báo lương nói lợi ích trước, rồi mới đến kế hoạch. Kế hoạch chỉ chuyển đi phần khách hàng thật sự cần.",
+      "Thông báo lương nói lợi ích trước, rồi mới đến kế hoạch lương.",
     ],
     html: () => `
       <div class="scr lock">${sb()}
@@ -146,7 +146,7 @@ const SCREENS = [
         <div class="lk-notif rel" data-go="home">${P(2)}
           <div class="n-head"><span class="n-app"><img src="${LOGO}" alt=""></span><span>Techcombank</span><span class="n-time">bây giờ</span></div>
           <b>Lương tháng 10 đã về: +18,500,000 VND</b>
-          <p>Lương bắt đầu sinh lời tự động từ hôm nay. Kế hoạch tháng 10 đã sẵn sàng, chỉ chuyển đi phần bạn thật sự cần.</p>
+          <p>Lương bắt đầu sinh lời tự động từ hôm nay. Kế hoạch lương tháng 10 đã sẵn sàng.</p>
           <div class="n-acts"><span>Để sau</span><span>Xem kế hoạch</span></div>
         </div>
         <div class="lk-bottom"><i class="ri-flashlight-fill"></i><i class="ri-camera-fill"></i></div>
@@ -161,7 +161,7 @@ const SCREENS = [
       "Số dư hiện tại vẫn là con số lớn nhất, đặt giữa màn hình, có nút ẩn hiện.",
       "Dòng sinh lời tự động ngay dưới số dư: tiền ở lại TCB đang làm việc mỗi ngày. “Vì sao?” mở ra lãi suất và cách tính.",
       "Nút Insight ngay dưới số dư. Một chạm mở bảng widget tài chính.",
-      "Thẻ ngày lương trong “Dành cho bạn”: chỉ hiện vào ngày lương, dẫn vào kế hoạch lương thay vì để khách hàng tự chuyển đi.",
+      "Thẻ ngày lương trong “Dành cho bạn”: chỉ hiện vào ngày lương, dẫn thẳng vào kế hoạch lương.",
       "Dải tháng lương từ ngày 5 đến ngày 4. Khách hàng biết mình đang ở đâu và sắp phải trả gì.",
     ],
     html: () => `
@@ -185,12 +185,12 @@ const SCREENS = [
   },
   {
     id: "bins", m: 1, name: "Insight số dư",
-    keep: "Widget “Lương ở lại TCB” biến việc giữ chân thành một con số khách hàng tự theo dõi, như theo dõi một mục tiêu.",
+    keep: "Widget “Lương đang sinh lời” cho khách hàng thấy mỗi ngày tiền ở TCB đang làm việc cho họ.",
     why: "Mang lại tính năng Insight từ bản AI-First. Chạm Insight dưới số dư, một bảng widget trượt xuống, trả lời ngay “mình đang ổn không” mà không phải rời Home.",
     tags: [["new", "Từ bản AI-First"], ["ctx", "Contextual"], ["ai", "AI xuyên suốt"]],
     notes: [
       "Mục tiêu lớn nhất nằm trên cùng, với thước đo tiến độ. Ngày lương là lúc mục tiêu vừa được nạp thêm.",
-      "Mỗi widget một con số và một câu giải thích: có thể chi, ngân sách ăn uống, và tỷ lệ lương ở lại TCB kèm tiền lãi dự kiến.",
+      "Mỗi widget một con số và một câu giải thích: có thể chi, ngân sách ăn uống, và số lương đang sinh lời kèm tiền lãi dự kiến.",
       "“Thêm insight mới” mở trợ lý AI. Khách hàng tự yêu cầu insight mình cần, bằng lời của mình.",
       "Sửa để ẩn hoặc sắp xếp widget. Đóng để quay về Home, Home vẫn mờ phía sau để giữ ngữ cảnh.",
     ],
@@ -200,32 +200,31 @@ const SCREENS = [
   /* ===== 2. Phân bổ ===== */
   {
     id: "split", m: 2, name: "Kế hoạch lương",
-    keep: "Đây là màn quyết định của cả đề xuất. Mục tiêu: lượng lương chuyển đi trong 48 giờ giảm từ “phần lớn” xuống “phần thật sự cần”, mà không chặn hay làm khó việc chuyển tiền.",
-    why: "Màn này từng tự động hóa việc chuyển lương sang ngân hàng khác. Giờ nó làm điều ngược lại: mặc định giữ lương ở TCB và sinh lời, chỉ chuyển đi phần khách hàng thật sự cần.",
+    keep: "Đây là màn quyết định của cả đề xuất. Khi mỗi đồng lương đã có chỗ và đang sinh lời ở TCB, việc giữ tiền ở đây trở thành lựa chọn tự nhiên ngay từ ngày lương.",
+    why: "Kế hoạch lương chia toàn bộ lương vào các hũ tại TCB, mỗi hũ một mục đích rõ ràng, và tất cả đều tự sinh lời.",
     tags: [["keep", "Giữ chân lương"], ["auto", "Auto-action"], ["trust", "Trust & transparency"]],
     notes: [
-      "Thanh tỷ lệ cho thấy bao nhiêu lương ở lại TCB và bao nhiêu đi. Con số mặc định đã ưu tiên ở lại.",
-      "Mọi hũ nằm trong TCB và tự sinh lời. Tiền chi tiêu vẫn dùng QR, chuyển khoản ngay, không bị khóa.",
-      "Chuyển sang ngân hàng khác vẫn có, không bị chặn. App dựa trên lịch sử tháng trước để chỉ ra phần nào thật sự cần chuyển, và nói rõ lợi ích nếu giữ lại.",
+      "Thanh phân bổ cho thấy cả tháng lương trong một cái nhìn. Con số mặc định dựa trên chi tiêu tháng trước.",
+      "Mọi hũ đều tự sinh lời. Tiền chi tiêu vẫn dùng QR, chuyển khoản ngay, không bị khóa.",
+      "Lợi ích của kế hoạch nói bằng tiền: lãi dự kiến, U-Point và hoàn tiền khi chi bằng TCB.",
       "Một lần trượt và Face ID cho cả kế hoạch. Tự lặp lại mỗi kỳ lương.",
     ],
     html: () => `
       <div class="scr">${sb()}${back("home", "Kế hoạch lương tháng 10", '<span class="cbtn"><i class="ri-more-2-fill"></i></span>')}
         <div class="body" style="gap:8px">
           <div class="split-top rel">${P(1)}<div class="sm muted">Lương nhận ngày 5/10</div><div class="amt"><span class="cur">VND</span>18,500,000</div>
-            <div class="kbar"><i class="in" style="flex:15.5"></i><i class="out" style="flex:3"></i></div>
-            <div class="row sp xs"><span style="color:#4ade80">Ở lại TCB 15,5tr, sinh lời 4,5%/năm</span><span class="dim">Chuyển đi 3tr</span></div>
+            <div class="kbar"><i style="flex:13;background:#4ade80"></i><i style="flex:1.5;background:#93c5fd"></i><i style="flex:2;background:#ff656b"></i><i style="flex:2;background:#fde68a"></i></div>
+            <div class="row sp xs"><span style="color:#4ade80">Toàn bộ sinh lời 4,5%/năm</span><span class="dim">Chi tiêu bất cứ lúc nào</span></div>
           </div>
           <div class="alloc rel">${P(2)}
-            <div class="al">${im("insight-wallet.png")}<div><b>Chi tiêu hằng ngày</b><div class="sub">Sinh lời tự động, dùng QR ngay</div></div><div class="v">10,000,000</div></div>
+            <div class="al">${im("insight-wallet.png")}<div><b>Chi tiêu hằng ngày</b><div class="sub">Sinh lời tự động, dùng QR ngay</div></div><div class="v">13,000,000</div></div>
             <div class="al">${im("tri-suggestion-plane.png")}<div><b>Hũ Du lịch Đà Lạt</b><div class="sub">6 / 10 triệu</div></div><div class="v">1,500,000</div></div>
             <div class="al">${im("banner-piggy.png")}<div><b>Quỹ khẩn cấp</b><div class="sub">Rút bất cứ lúc nào</div></div><div class="v">2,000,000</div></div>
             <div class="al">${im("tri-suggestion-freeze.png")}<div><b>Trả thẻ TCB</b><div class="sub"><span class="why-chip">Dư nợ kỳ này 1,950,000</span></div></div><div class="v">2,000,000</div></div>
           </div>
-          <div class="outc rel">${P(3)}
-            <div class="row"><span class="ph"><i class="ri-bank-line"></i></span><div class="grow"><b>Chuyển sang VCB ...0912</b><div class="xs muted">Khoản vay mua xe trả qua VCB</div></div><div class="v"><s class="dim xs">9,000,000</s><br>3,000,000</div></div>
-            <div class="xs" style="color:#d4d4d8">Tháng 9 bạn chuyển 9tr. Khoảng 6tr trong đó dùng cho ăn uống, QR và hóa đơn, những việc làm ngay tại TCB được.</div>
-            <div class="row" style="gap:6px"><span class="chip hot">Giữ 6tr ở TCB: +22k lãi</span><span class="chip">Chuyển 9tr như cũ</span></div>
+          <div class="gain rel">${P(3)}
+            <div class="xs" style="opacity:.7">Bạn nhận được trong tháng 10</div>
+            <div class="gain-row"><div><b>+69,000</b><span>lãi dự kiến</span></div><div><b>x2</b><span>U-Point khi quét QR</span></div><div><b>15%</b><span>hoàn tiền cà phê</span></div></div>
           </div>
         </div>
         <div class="foot rel">${P(4, "in")}
@@ -236,28 +235,27 @@ const SCREENS = [
   },
   {
     id: "splitdone", m: 2, name: "Kế hoạch đã chạy",
-    keep: "Ghi nhận lợi ích ngay sau quyết định: bao nhiêu tiền ở lại, lãi dự kiến, U-Point. Khách hàng thấy mình được lợi, không thấy mình bị giữ.",
+    keep: "Ghi nhận lợi ích ngay sau khi xác nhận: tiền đang sinh lời, lãi dự kiến. Khách hàng thấy mình được lợi khi để lương ở TCB.",
     why: "Khép lại bằng lợi ích cụ thể và một chút cảm xúc: tiền ở lại đang sinh lời, và hũ quà cưới cho em gái có lời nhắn.",
     tags: [["emo", "Emotional & personal"], ["trust", "Trust & transparency"]],
     notes: [
-      "Kết quả đầu tiên là lợi ích của việc ở lại: số tiền giữ lại, lãi dự kiến, so với tháng trước.",
-      "Biên nhận theo từng đích đến, gồm cả khoản chuyển đi. Minh bạch, không giấu.",
+      "Kết quả đầu tiên là lợi ích: toàn bộ lương đang sinh lời và lãi dự kiến của tháng.",
+      "Biên nhận theo từng hũ. Khách hàng thấy mỗi đồng lương đã có chỗ.",
       "Mục tiêu dành cho người thân có lời nhắn kèm theo. Đây là phần cảm xúc mà team đã vote.",
     ],
     html: () => `
       <div class="scr">${sb()}
         <div class="hdr"><span class="cbtn" data-go="home"><i class="ri-close-line"></i></span><h5></h5><span class="cbtn"><i class="ri-share-forward-line"></i></span></div>
         <div class="body">
-          <div class="done-hero">${im("banner-piggy.png", "")}<h6>Kế hoạch lương đã chạy</h6><div class="sm muted" style="margin-top:4px">5 lệnh hoàn tất lúc 08:04</div></div>
+          <div class="done-hero">${im("banner-piggy.png", "")}<h6>Kế hoạch lương đã chạy</h6><div class="sm muted" style="margin-top:4px">4 hũ đã sẵn sàng lúc 08:04</div></div>
           <div class="keepc rel">${P(1)}
-            <div class="row">${im("banner-auto-earning-u.png")}<div class="grow"><div class="xs" style="opacity:.75">Ở lại Techcombank</div><b style="font-size:22px">15,500,000</b></div><div style="text-align:right"><div class="xs" style="opacity:.75">Lãi dự kiến</div><b>+58,000</b></div></div>
-            <div class="xs" style="opacity:.85">Tháng 9 chỉ 18% lương ở lại. Tháng này là 84%.</div>
+            <div class="row">${im("banner-auto-earning-u.png")}<div class="grow"><div class="xs" style="opacity:.75">Đang sinh lời</div><b style="font-size:22px">18,500,000</b></div><div style="text-align:right"><div class="xs" style="opacity:.75">Lãi dự kiến</div><b>+69,000</b></div></div>
+            <div class="xs" style="opacity:.85">Mỗi đồng lương đã có chỗ. Rút hoặc chi bất cứ lúc nào.</div>
           </div>
           <div class="receipt card rel">${P(2)}
-            <div class="row sp"><span class="row"><i class="ri-checkbox-circle-fill"></i>Chi tiêu hằng ngày</span><b>10,000,000</b></div>
+            <div class="row sp"><span class="row"><i class="ri-checkbox-circle-fill"></i>Chi tiêu hằng ngày</span><b>13,000,000</b></div>
             <div class="row sp"><span class="row"><i class="ri-checkbox-circle-fill"></i>2 hũ tiết kiệm</span><b>3,500,000</b></div>
             <div class="row sp"><span class="row"><i class="ri-checkbox-circle-fill"></i>Trả thẻ TCB</span><b>2,000,000</b></div>
-            <div class="row sp"><span class="row"><i class="ri-checkbox-circle-fill"></i>Chuyển VCB ...0912</span><b>3,000,000</b></div>
           </div>
           <div class="goal rel">${P(3)}
             <div class="row">${im("insight-house.png")}<b class="grow">Mừng cưới em Linh</b><span class="sm">3 / 5tr</span></div>
@@ -336,12 +334,12 @@ const SCREENS = [
   },
   {
     id: "qr", m: 3, name: "QR kèm ưu đãi tại chỗ",
-    keep: "QR là giao dịch có tần suất cao nhất. Trả bằng TCB thay vì ngân hàng khác phải có lợi thấy ngay: hoàn tiền và U-Point hiện trước khi trả.",
+    keep: "QR là giao dịch có tần suất cao nhất. Mỗi lần trả bằng TCB phải có lợi thấy ngay: hoàn tiền và U-Point hiện trước khi trả.",
     why: "Ưu đãi đang tản mát ở nhiều nơi. Đưa đúng ưu đãi vào đúng lúc thanh toán, khách hàng không cần đi tìm.",
     tags: [["ctx", "Contextual"], ["auto", "Auto-action"]],
     notes: [
       "Nhận diện cửa hàng từ mã QR và vị trí. Ưu đãi phù hợp tự hiện trong luồng thanh toán.",
-      "Số tiền được hoàn và U-Point hiện trước khi trả. Lý do để trả bằng TCB thay vì ngân hàng khác hiện ngay ở đây.",
+      "Số tiền được hoàn và U-Point hiện trước khi trả. Lợi ích của việc trả bằng TCB hiện ngay ở đây.",
       "Lối vào Growth hub: mọi ưu đãi và thử thách gom về một chỗ.",
     ],
     html: () => `
@@ -366,8 +364,8 @@ const SCREENS = [
     tags: [["nav", "Self-service navigation"], ["auto", "Auto-action"]],
     notes: [
       "Lịch đi từ ngày lương đến ngày lương. Chấm màu phân biệt hóa đơn, kỳ thẻ và ưu đãi.",
-      "Hóa đơn được nhận diện từ lịch sử. Trạng thái rõ ràng: đã trích, tự động, cần trả, hoặc đang trả ngoài TCB.",
-      "Phát hiện hóa đơn đang trả qua ngân hàng khác và mời chuyển về TCB trong một bước, có ưu đãi tháng đầu.",
+      "Hóa đơn được nhận diện từ lịch sử. Trạng thái rõ ràng: đã trích, tự động, cần trả, hoặc chưa liên kết.",
+      "Gợi ý liên kết các hóa đơn định kỳ chưa trả qua TCB, trong một bước, có ưu đãi tháng đầu.",
     ],
     html: () => `
       <div class="scr">${sb()}
@@ -394,11 +392,11 @@ const SCREENS = [
             <div class="ev"><div class="date">15<small>T5</small></div><div><b class="sm">Thẻ tín dụng</b><div class="xs muted">1,950,000</div></div><span class="st ok">Đã trích</span></div>
             <div class="ev"><div class="date">20<small>T3</small></div><div><b class="sm">Học phí tiếng Anh</b><div class="xs muted">3,200,000</div></div><span class="st due">Cần trả</span></div>
             <div class="ev"><div class="date">25<small>CN</small></div><div><b class="sm">Điện, nước</b><div class="xs muted">khoảng 650,000</div></div><span class="st auto">Tự động</span></div>
-            <div class="ev" style="border:0"><div class="date">31<small>T7</small></div><div><b class="sm">Netflix, iCloud</b><div class="xs muted">480,000, qua VCB</div></div><span class="st due">Ngoài TCB</span></div>
+            <div class="ev" style="border:0"><div class="date">31<small>T7</small></div><div><b class="sm">Netflix, iCloud</b><div class="xs muted">480,000</div></div><span class="st due">Chưa liên kết</span></div>
           </div>
           <div class="switch rel" data-go="alert">${P(3)}
-            <div class="row">${im("action-paybills.png")}<div class="grow"><b class="sm">3 khoản đang trả qua VCB</b><div class="xs" style="color:#3f3f46">Internet, Netflix, iCloud. Chuyển về TCB trong 1 phút, x2 U-Point tháng đầu.</div></div></div>
-            <span class="pill k" style="justify-self:start">Chuyển về TCB</span>
+            <div class="row">${im("action-paybills.png")}<div class="grow"><b class="sm">3 hóa đơn chưa liên kết TCB</b><div class="xs" style="color:#3f3f46">Internet, Netflix, iCloud. Liên kết trong 1 phút, x2 U-Point tháng đầu.</div></div></div>
+            <span class="pill k" style="justify-self:start">Liên kết ngay</span>
           </div>
         </div>
         ${bb("“Tháng này còn hóa đơn nào?”")}
@@ -474,11 +472,11 @@ const SCREENS = [
   /* ===== 5. Nhìn lại ===== */
   {
     id: "story", m: 5, name: "Recap tháng",
-    keep: "Lần đầu khách hàng thấy con số giữ chân của chính mình, kèm lợi ích đã nhận. Tháng sau họ có lý do để giữ lại nhiều hơn.",
-    why: "Mở đầu phần nhìn lại bằng điều khách hàng được nhận khi giữ lương ở TCB, rồi mới đến câu hỏi tiền đi đâu.",
+    keep: "Lần đầu khách hàng thấy bằng tiền thật việc để lương ở TCB mang lại gì. Tháng sau họ có lý do để tiếp tục.",
+    why: "Mở đầu phần nhìn lại bằng điều khách hàng đã nhận được, rồi mới đến câu hỏi tiền đi đâu.",
     tags: [["emo", "Emotional & personal"], ["ctx", "Contextual"]],
     notes: [
-      "Recap mở bằng con số giữ chân, tối ngày 4, trước kỳ lương mới. Ghi nhận thay vì phán xét.",
+      "Recap mở bằng lợi ích đã nhận, tối ngày 4, trước kỳ lương mới. Ghi nhận thay vì phán xét.",
       "Lợi ích nói bằng tiền thật: lãi và U-Point đã nhận. So với tháng trước và mục tiêu tháng sau.",
       "Slide tiếp theo dẫn sang câu hỏi “tiền đi đâu” với trợ lý AI.",
     ],
@@ -487,13 +485,13 @@ const SCREENS = [
         <div class="story-bars"><i class="on"></i><i class="on"></i><i></i><i></i><i></i></div>
         <div class="story-top"><img src="${LOGO}" alt=""><b>Tháng 10 của Minh</b><i class="ri-close-line" style="margin-left:auto;font-size:22px"></i></div>
         <div class="story-main rel" data-go="ai">${P(1, "in")}
-          <div class="k">Tháng 10, bạn giữ lại Techcombank</div>
-          <div class="big">84%</div>
-          <div class="line rel">${P(2)}lương của mình. Tiền đã tự sinh lời 58,000 và bạn nhận 1,240 U-Point.</div>
+          <div class="k">Tháng 10, lương của bạn đã tự sinh lời</div>
+          <div class="big">+58k</div>
+          <div class="line rel">${P(2)}trong lúc chờ chi tiêu. Bạn còn nhận thêm 1,240 U-Point từ QR và hóa đơn.</div>
           <div class="cmpbars">
-            <div><span>Tháng 9</span><i style="height:18%"></i><b>18%</b></div>
-            <div class="now"><span>Tháng 10</span><i style="height:84%"></i><b>84%</b></div>
-            <div class="tgt"><span>Mục tiêu tháng 11</span><i style="height:90%"></i><b>90%</b></div>
+            <div><span>Tháng 9</span><i style="height:13%"></i><b>+9k</b></div>
+            <div class="now"><span>Tháng 10</span><i style="height:83%"></i><b>+58k</b></div>
+            <div class="tgt"><span>Mục tiêu tháng 11</span><i style="height:100%"></i><b>+70k</b></div>
           </div>
         </div>
         <div class="foot rel">${P(3, "in")}<div class="btn" data-go="ai"><img src="${LOGO}" alt="" style="width:22px">Xem tiền đã đi đâu</div></div>
@@ -501,12 +499,12 @@ const SCREENS = [
   },
   {
     id: "ai", m: 5, name: "Hỏi trợ lý AI",
-    keep: "Khoảng mù dữ liệu được nói thẳng. Cả hai lối ra đều có lợi cho TCB: kết nối tài khoản ngoài để TCB là nơi xem toàn cảnh, hoặc chi tiêu nhiều hơn tại TCB.",
+    keep: "Câu trả lời chỉ đầy đủ khi chi tiêu diễn ra ở TCB. Đây là giá trị chỉ có khi lương ở lại, và là lý do để chi tiêu nhiều hơn qua TCB.",
     why: "Khách hàng hỏi bằng đúng câu trong đầu mình. AI trả lời bằng dữ kiện, chỉ rõ nguồn, và có thể biến câu trả lời thành một insight trên Home.",
     tags: [["ai", "AI xuyên suốt"], ["trust", "Trust & transparency"], ["new", "Từ bản AI-First"]],
     notes: [
       "Câu hỏi bằng ngôn ngữ của khách hàng, gõ hoặc nói.",
-      "Trả lời có số liệu và nguồn. AI nói thẳng phần nó không thấy: 3tr đã chuyển sang VCB, kèm lựa chọn kết nối tài khoản đó qua Open API.",
+      "Trả lời có số liệu, so sánh và nguồn: 86 giao dịch trong kỳ lương.",
       "“Thêm insight cà phê” biến câu trả lời thành một widget trong bảng Insight, như luồng Add new insight của bản AI-First.",
       "Ô nhập dạng pill giống thanh “Hỏi bất cứ điều gì” ở Home, nên khách hàng nhận ra ngay.",
     ],
@@ -521,10 +519,10 @@ const SCREENS = [
               <div class="reason"><span>Giao đồ ăn, 23 đơn</span><b>2,1tr</b><div class="bar"><i style="width:90%"></i></div></div>
               <div class="reason"><span>Mua sắm online dịp 10.10</span><b>1,8tr</b><div class="bar"><i style="width:72%"></i></div></div>
               <div class="reason"><span>Cà phê, 19 lần</span><b>1,4tr</b><div class="bar"><i style="width:56%"></i></div></div>
-              <div class="src"><i class="ri-database-2-line"></i>Dựa trên 86 giao dịch tại TCB. 3tr chuyển sang VCB chưa có trong phân tích.</div>
+              <div class="src"><i class="ri-database-2-line"></i>Dựa trên 86 giao dịch từ 5/10 đến 4/11</div>
             </div>
           </div>
-          <div class="sugg rel">${P(3)}<span class="chip hot" data-go="bins2"><img src="${LOGO}" alt="">Thêm insight cà phê</span><span class="chip ai" data-go="insight">Xem gợi ý tháng 11</span><span class="chip">Kết nối VCB để xem đủ</span></div>
+          <div class="sugg rel">${P(3)}<span class="chip hot" data-go="bins2"><img src="${LOGO}" alt="">Thêm insight cà phê</span><span class="chip ai" data-go="insight">Xem gợi ý tháng 11</span><span class="chip">So với tháng 8</span></div>
         </div>
         <div class="composer rel">${P(4)}<i class="ri-add-line" style="font-size:20px"></i><span class="in">Hỏi tiếp về chi tiêu của bạn</span><span class="send"><img src="${LOGO}" alt=""></span></div>
       </div>`,

@@ -558,3 +558,9 @@ body.present .stage-wrap { min-height: 100vh; min-height: 100dvh; }
 .cmpbars > div span { order: 3; color: rgba(255, 255, 255, 0.75); }
 .cmpbars .now i { background: #fff; }
 .cmpbars .tgt i { background: transparent; border: 1.5px dashed rgba(255, 255, 255, 0.6); }
+
+.gain { display: grid; gap: 10px; padding: 14px 16px; border-radius: 28px; background: var(--raised); border: 1px solid var(--line); }
+.gain-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.gain-row > div { display: grid; gap: 2px; padding: 10px 10px; border-radius: 18px; background: #0b0b0b; }
+.gain-row b { font-size: 17px; color: var(--green); }
+.gain-row span { font-size: 10.5px; color: var(--text-2); line-height: 1.3; }
