@@ -17,9 +17,11 @@
     <div class="wrap">
       <a class="brand" href="#"><img src="assets/logo-new.svg" alt="" /><span>Mobile Revamp · Hero Journey</span></a>
       <nav aria-label="Các phần">
+        <a href="#problem">Bài toán</a>
         <a href="#journey">Hành trình</a>
         <a href="#principles">Nguyên tắc</a>
         <a href="#screens">Wireframes</a>
+        <a href="#metrics">Đo lường</a>
         <a class="go" href="#prototype">Prototype</a>
       </nav>
     </div>
@@ -34,17 +36,57 @@
           <div class="persona-face">M</div>
           <p><b>Minh, 27 tuổi, nhân viên Công ty B</b>Nhận lương qua Techcombank vào ngày 5 hằng tháng. Ngân hàng chính để chi tiêu hằng ngày là một ngân hàng khác. Persona: Dynamic Salary.</p>
         </div>
-        <div class="glass"><p>Chúng tôi không thiết kế lại cả app. Chúng tôi chọn 15 màn hình nằm đúng trên hành trình một tháng của Minh, nơi app có thể chuyển từ ngân hàng giao dịch thành một Financial Companion.</p></div>
+        <div class="glass"><p>Chúng tôi không thiết kế lại cả app. Chúng tôi chọn 15 màn hình trên hành trình một tháng của Minh, để ở mỗi khoảnh khắc, giữ tiền ở TCB đều có lợi hơn chuyển đi.</p></div>
+      </div>
+    </section>
+
+    <section id="problem" class="sec wrap" style="padding-top:56px">
+      <div class="sec-head">
+        <h2>Lương về TCB, nhưng không ở lại TCB</h2>
+        <p>Công ty B chọn TCB để trả lương, Minh thì không. Trong một hai ngày, phần lớn lương được chuyển sang ngân hàng Minh dùng hằng ngày. TCB trở thành trạm trung chuyển lương.</p>
+      </div>
+      <div class="problem">
+        <div class="pb">
+          <h3>Vì sao lương rời đi</h3>
+          <p class="pb-sub">Giả thuyết, cần kiểm chứng bằng dữ liệu và phỏng vấn</p>
+          <ol>
+            <li><b>Mỏ neo ở ngân hàng chính.</b> Ví điện tử, hóa đơn tự động, khoản vay, thẻ đều gắn với ngân hàng kia.</li>
+            <li><b>Không thấy lợi ích để ở.</b> Khách hàng không biết số dư ở TCB có thể tự sinh lời, ưu đãi thì tản mát.</li>
+            <li><b>Tài khoản do công ty chọn.</b> Khách hàng xem TCB là “tài khoản nhận lương”, không phải ngân hàng của mình.</li>
+            <li><b>Thói quen tháng nào cũng vậy.</b> Lương về là chuyển, không có khoảnh khắc nào khiến họ dừng lại cân nhắc.</li>
+          </ol>
+        </div>
+        <div class="pb">
+          <h3>TCB mất gì</h3>
+          <p class="pb-sub">Mỗi đồng lương rời đi kéo theo</p>
+          <ol>
+            <li><b>Số dư CASA</b>, nguồn vốn chi phí thấp nhất của ngân hàng.</li>
+            <li><b>Dữ liệu chi tiêu.</b> Không có dữ liệu thì không có insight, không cá nhân hóa được.</li>
+            <li><b>Tần suất mở app.</b> Khách hàng chỉ mở TCB vào ngày lương.</li>
+            <li><b>Cơ hội bán chéo</b> thẻ, tiết kiệm, vay, bảo hiểm.</li>
+          </ol>
+        </div>
+        <div class="pb lead">
+          <h3>Đề xuất này làm gì</h3>
+          <p class="pb-sub">Không chặn tiền đi. Làm cho việc ở lại có lợi hơn.</p>
+          <ol>
+            <li><b>Ngày lương:</b> lương tự sinh lời, kế hoạch lương mặc định giữ lại.</li>
+            <li><b>Hằng ngày:</b> kéo hóa đơn, QR và chuyển tiền gia đình về TCB.</li>
+            <li><b>Cuối tháng:</b> thẻ TCB duyệt trước nhờ lịch sử lương.</li>
+            <li><b>Nhìn lại:</b> ghi nhận bao nhiêu lương đã ở lại và khách hàng nhận được gì.</li>
+          </ol>
+        </div>
       </div>
     </section>
 
     <section class="curve-sec wrap" aria-labelledby="curve-title">
       <div class="curve-box">
         <div class="curve-head">
-          <h2 id="curve-title">Mức độ chủ động của Minh qua một tháng</h2>
-          <div class="legend"><span><i class="l-now"></i>App hiện tại</span><span><i class="l-new"></i>Với đề xuất</span></div>
+          <h2 id="curve-title">Lương của Minh còn lại bao nhiêu ở TCB</h2>
+          <div class="legend"><span><i class="l-now"></i>Hiện tại, giả định</span><span><i class="l-new"></i>Với đề xuất, mục tiêu</span></div>
         </div>
-        <svg id="curve" class="curve-svg" viewBox="0 0 1200 380" role="img" aria-label="Biểu đồ mức độ chủ động: hiện tại giảm mạnh vào cuối tháng, với đề xuất giữ ổn định"></svg>
+        <svg id="curve" class="curve-svg" viewBox="0 0 1200 380" role="img" aria-label="Biểu đồ tỷ lệ lương còn ở TCB: hiện tại giảm gần hết sau 1–2 ngày, với đề xuất giảm dần theo chi tiêu và giữ khoảng 30% trong hũ tiết kiệm"></svg>
+        <p class="curve-note">Minh họa theo giả thuyết, cần đối chiếu với dữ liệu thật về dòng tiền của nhóm Dynamic Salary.</p>
       </div>
     </section>
 
@@ -60,10 +102,17 @@
 
     <section id="principles" class="sec wrap">
       <div class="sec-head">
-        <h2>Bốn nguyên tắc từ buổi dot voting</h2>
-        <p>Gom từ hai câu hỏi How might we: giúp khách hàng biết mình đang ở đâu và làm gì tiếp theo, và giúp họ ra quyết định tài chính tự tin ở mọi khoảnh khắc.</p>
+        <h2>Năm nguyên tắc thiết kế</h2>
+        <p>Một nguyên tắc đến từ bài toán kinh doanh. Bốn nguyên tắc còn lại gom từ buổi dot voting, quanh hai câu hỏi How might we: giúp khách hàng biết mình đang ở đâu và làm gì tiếp theo, và ra quyết định tài chính tự tin ở mọi khoảnh khắc.</p>
       </div>
       <div class="principles">
+        <div class="pr lead">
+          <img src="assets/banner-auto-earning-u.png" alt="" />
+          <h3>Ở lại vì có lợi</h3>
+          <p class="votes">Từ bài toán kinh doanh</p>
+          <p>Không chặn, không làm khó việc chuyển tiền đi. Mỗi màn hình phải trả lời: giữ tiền ở TCB thì Minh được gì, ngay hôm nay.</p>
+          <p class="seen">Xuất hiện ở: Thông báo lương, Kế hoạch lương, Hóa đơn, Recap</p>
+        </div>
         <div class="pr">
           <img src="assets/ai.png" alt="" />
           <h3>AI luôn ở cạnh</h3>
@@ -103,6 +152,47 @@
       <div id="moments"></div>
     </section>
 
+    <section id="metrics" class="sec wrap">
+      <div class="sec-head">
+        <h2>Đo bằng gì</h2>
+        <p>Một chỉ số chính cho bài toán giữ lương, các chỉ số hỗ trợ theo từng khoảnh khắc, và chỉ số bảo vệ để không đánh đổi trải nghiệm.</p>
+      </div>
+      <div class="metrics">
+        <div class="ns">
+          <span class="ns-k">Chỉ số chính</span>
+          <b>Tỷ lệ lương còn ở TCB sau 7 ngày</b>
+          <p>Của nhóm khách hàng Dynamic Salary, so với nhóm đối chứng chưa dùng thiết kế mới.</p>
+        </div>
+        <div class="mt">
+          <h3>Chỉ số hỗ trợ</h3>
+          <ul>
+            <li>Tỷ lệ bật kế hoạch lương tự động</li>
+            <li>Số tiền chuyển ra ngân hàng khác trong 48 giờ sau ngày lương</li>
+            <li>Tỷ lệ khách hàng chuyển ít nhất một hóa đơn định kỳ về TCB</li>
+            <li>Số giao dịch QR và chi tiêu qua TCB mỗi tháng</li>
+            <li>Số ngày mở app mỗi tháng, và tỷ lệ dùng Insight</li>
+          </ul>
+        </div>
+        <div class="mt">
+          <h3>Chỉ số bảo vệ</h3>
+          <ul>
+            <li>Không tăng khiếu nại về việc khó chuyển tiền ra ngoài</li>
+            <li>Tỷ lệ trả thẻ đúng hạn ở luồng thẻ cầu nối</li>
+            <li>Mức hài lòng và NPS của nhóm Dynamic Salary</li>
+          </ul>
+        </div>
+        <div class="mt">
+          <h3>Cần kiểm chứng trước khi build</h3>
+          <ul>
+            <li>Bao nhiêu phần trăm lương thật sự rời đi trong 48 giờ</li>
+            <li>Lý do chính khiến khách hàng chuyển đi</li>
+            <li>Mức lãi hoặc ưu đãi nào đủ để đổi thói quen</li>
+            <li>Bao nhiêu hóa đơn và ví điện tử đang gắn với ngân hàng khác</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
     <section id="prototype" class="proto wrap">
       <div class="stage-wrap">
         <div class="flow glass">
@@ -116,6 +206,7 @@
           <h4 id="nowTitle"></h4>
           <div class="rule"></div>
           <p id="nowWhy"></p>
+          <div class="keep side"><b>Giữ lương ở lại TCB</b><span id="nowKeep"></span></div>
           <div class="ctrls">
             <button type="button" id="prevBtn"><i class="ri-arrow-left-line"></i>Trước</button>
             <button type="button" class="pri" id="nextBtn">Tiếp<i class="ri-arrow-right-line"></i></button>

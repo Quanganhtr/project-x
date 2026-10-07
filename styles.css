@@ -504,3 +504,57 @@ body.present .stage-wrap { min-height: 100vh; min-height: 100dvh; }
 @media (max-height: 900px) { body.present .stage .dev { zoom: 0.9; } }
 @media (max-height: 800px) { body.present .stage .dev { zoom: 0.8; } }
 .side-note p.kbd::before { display: none; }
+
+/* ===== Retention layer ===== */
+.problem { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 12px; }
+.pb { padding: 26px; border-radius: 32px; background: var(--panel); border: 1px solid var(--raised); }
+.pb.lead { background: var(--coral); color: #000; border-color: var(--coral); }
+.pb h3 { font: 500 22px/1.2 var(--font); margin: 0 0 4px; }
+.pb-sub { margin: 0 0 16px; font-size: 13px; color: var(--text-3); }
+.pb.lead .pb-sub { color: rgba(0, 0, 0, 0.65); }
+.pb ol { margin: 0; padding-left: 20px; display: grid; gap: 10px; font-size: 14.5px; color: #d4d4d8; }
+.pb.lead ol { color: #000; }
+.pb li::marker { color: var(--dot); font-weight: 500; }
+.pb.lead li::marker { color: #000; }
+.pb b { color: inherit; font-weight: 500; }
+.pb:not(.lead) b { color: #fff; }
+.curve-note { margin: 10px 0 0; font-size: 12.5px; color: var(--text-3); }
+.curve-svg .ann { font: 400 13px var(--font); fill: #fecaca; }
+.jm .leak { color: #fdba74; }
+.jm .lever { color: #86efac; }
+.pr.lead { background: var(--coral); color: #000; border-color: var(--coral); }
+.pr.lead p, .pr.lead .seen { color: rgba(0, 0, 0, 0.75); }
+.pr.lead .votes { color: #000; font-weight: 500; }
+.keep { margin: 0 0 18px; padding: 12px 14px; border-radius: 18px; background: rgba(237, 28, 36, 0.12); border: 1px solid rgba(237, 28, 36, 0.35); font-size: 14px; color: #fecaca; display: grid; gap: 4px; }
+.keep b { color: #fff; font-weight: 500; font-size: 12.5px; letter-spacing: 0.02em; }
+.keep.side { margin-bottom: 18px; font-size: 13.5px; }
+.tag.t-keep { color: #fff; background: var(--brand); border-color: var(--brand); }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
+.ns { padding: 26px; border-radius: 32px; background: #fff; color: #000; display: flex; flex-direction: column; gap: 8px; }
+.ns-k { font-size: 12.5px; color: var(--brand); font-weight: 500; }
+.ns b { font: 500 26px/1.15 var(--font); letter-spacing: -0.01em; }
+.ns p { margin: auto 0 0; font-size: 14px; color: #3f3f46; }
+.mt { padding: 24px; border-radius: 32px; background: var(--panel); border: 1px solid var(--raised); }
+.mt h3 { font: 500 18px/1.2 var(--font); margin: 0 0 12px; }
+.mt ul { margin: 0; padding-left: 18px; display: grid; gap: 8px; font-size: 14px; color: #d4d4d8; }
+.mt li::marker { color: var(--dot); }
+
+/* phone: retention components */
+.kbar { display: flex; gap: 3px; height: 10px; margin: 12px 0 6px; }
+.kbar i { border-radius: 4px; }
+.kbar .in { background: var(--green); }
+.kbar .out { background: #3f3f46; }
+.outc { display: grid; gap: 8px; padding: 12px 14px; border-radius: 28px; border: 1px dashed #52525b; }
+.outc .ph { width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center; background: var(--raised-2); flex: none; }
+.outc .v { text-align: right; font-weight: 500; font-size: 14px; line-height: 1.2; }
+.keepc { display: grid; gap: 8px; padding: 14px 16px; border-radius: 28px; background: var(--green); color: #000; }
+.keepc .d3 { width: 44px; height: 44px; }
+.switch { display: grid; gap: 10px; padding: 14px 16px; border-radius: 30px; background: var(--coral); color: #000; cursor: pointer; }
+.switch .d3 { width: 44px; height: 44px; }
+.cmpbars { margin-top: auto; margin-bottom: 18px; height: 220px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: end; }
+.cmpbars > div { height: 100%; display: flex; flex-direction: column; justify-content: flex-end; align-items: stretch; gap: 6px; text-align: center; font-size: 12px; }
+.cmpbars > div i { display: block; border-radius: 16px; background: rgba(255, 255, 255, 0.18); order: 2; }
+.cmpbars > div b { order: 1; font-size: 16px; }
+.cmpbars > div span { order: 3; color: rgba(255, 255, 255, 0.75); }
+.cmpbars .now i { background: #fff; }
+.cmpbars .tgt i { background: transparent; border: 1.5px dashed rgba(255, 255, 255, 0.6); }
