@@ -5,16 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>Lương về · Techcombank Mobile Revamp</title>
   <meta name="description" content="Hero journey, wireframes và prototype cho đề xuất revamp Techcombank Mobile (Mass segment)." />
+  <link rel="icon" href="assets/logo-new.svg" type="image/svg+xml" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;1,500&family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,600..800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="top">
     <div class="wrap">
-      <a class="brand" href="#"><span class="brand-dot"></span>TCB Mobile Revamp</a>
+      <a class="brand" href="#"><img src="assets/logo-new.svg" alt="" /><span>Mobile Revamp · Hero Journey</span></a>
       <nav aria-label="Các phần">
         <a href="#journey">Hành trình</a>
         <a href="#principles">Nguyên tắc</a>
@@ -29,11 +30,11 @@
       <p class="hero-kicker">Đề xuất revamp Techcombank Mobile cho khách hàng Mass. Hero journey của một tháng lương.</p>
       <h1><span>Lương về.</span><span>Tiền đi đâu.</span><span>Luôn chủ động.</span></h1>
       <div class="hero-sub">
-        <div class="persona">
+        <div class="glass persona">
           <div class="persona-face">M</div>
           <p><b>Minh, 27 tuổi, nhân viên Công ty B</b>Nhận lương qua Techcombank vào ngày 5 hằng tháng. Ngân hàng chính để chi tiêu hằng ngày là một ngân hàng khác. Persona: Dynamic Salary.</p>
         </div>
-        <p>Chúng tôi không thiết kế lại cả app. Chúng tôi chọn 13 màn hình nằm đúng trên hành trình một tháng của Minh, nơi app có thể chuyển từ ngân hàng giao dịch thành một Financial Companion.</p>
+        <div class="glass"><p>Chúng tôi không thiết kế lại cả app. Chúng tôi chọn 15 màn hình nằm đúng trên hành trình một tháng của Minh, nơi app có thể chuyển từ ngân hàng giao dịch thành một Financial Companion.</p></div>
       </div>
     </section>
 
@@ -64,66 +65,71 @@
       </div>
       <div class="principles">
         <div class="pr">
-          <h3><i class="ri-sparkling-2-line"></i>AI luôn ở cạnh</h3>
+          <img src="assets/ai.png" alt="" />
+          <h3>AI luôn ở cạnh</h3>
           <p class="votes">6 phiếu, chủ đề được vote cao nhất</p>
-          <p>Một thanh AI cố định trên mọi màn hình chính. Gõ hoặc nói một câu tự nhiên, AI điền sẵn và đưa ra màn hình xác nhận.</p>
-          <p class="seen">Xuất hiện ở: Home, Thanh toán, Trợ lý AI</p>
+          <p>Thanh “Hỏi bất cứ điều gì” cố định ở mọi màn hình chính. Gõ hoặc nói một câu tự nhiên, AI điền sẵn và đưa ra màn hình xác nhận.</p>
+          <p class="seen">Xuất hiện ở: Home, Thanh toán, Trợ lý AI, Insight</p>
         </div>
         <div class="pr">
-          <h3><i class="ri-shield-check-line"></i>Luôn có lý do</h3>
+          <img src="assets/tri-suggestion-freeze.png" alt="" />
+          <h3>Luôn có lý do</h3>
           <p class="votes">5 trên 6 contributors</p>
-          <p>Mọi con số và gợi ý đều có nút "Vì sao?" chỉ ra dữ liệu phía sau. Luôn có đường lui rõ ràng: sửa, hủy, tắt.</p>
+          <p>Mọi con số và gợi ý đều có nút “Vì sao?” chỉ ra dữ liệu phía sau. Luôn có đường lui rõ ràng: sửa, hủy, tắt.</p>
           <p class="seen">Xuất hiện ở: Chia lương, Chuyển tiền, Cảnh báo dòng tiền</p>
         </div>
         <div class="pr">
-          <h3><i class="ri-flashlight-line"></i>Một lần xác nhận</h3>
+          <img src="assets/banner-piggy.png" alt="" />
+          <h3>Một lần xác nhận</h3>
           <p class="votes">Auto-action, từ board ý tưởng</p>
           <p>Việc lặp lại mỗi tháng được gom thành một kế hoạch. Khách hàng xem lại và xác nhận một lần, không phải nhập lại từng lệnh.</p>
           <p class="seen">Xuất hiện ở: Thông báo lương, Chia lương, Lịch tài chính</p>
         </div>
         <div class="pr">
-          <h3><i class="ri-compass-3-line"></i>Đúng lúc, đúng chỗ</h3>
+          <img src="assets/insight-icon.png" alt="" />
+          <h3>Đúng lúc, đúng chỗ</h3>
           <p class="votes">Contextual Intelligence, 4 phiếu</p>
-          <p>App biết hôm nay là ngày mấy trong tháng lương. Ưu đãi hiện ra khi đang thanh toán, cảnh báo đến trước khi hết tiền.</p>
-          <p class="seen">Xuất hiện ở: Quét QR, Cảnh báo, Recap tháng</p>
+          <p>App biết hôm nay là ngày mấy trong tháng lương. Insight nằm ngay dưới số dư, ưu đãi hiện khi đang thanh toán, cảnh báo đến trước khi hết tiền.</p>
+          <p class="seen">Xuất hiện ở: Insight, Quét QR, Cảnh báo, Recap tháng</p>
         </div>
       </div>
     </section>
 
     <section id="screens" class="sec wrap">
       <div class="sec-head">
-        <h2>13 màn hình trên hành trình</h2>
-        <p>Wireframe mid-fi, kích thước 375 × 812. Ghi chú vàng đánh số tương ứng với điểm trên màn hình. Bấm "Thử trong prototype" để đi theo luồng.</p>
+        <h2>15 màn hình trên hành trình</h2>
+        <p>Kích thước 375 × 812, theo ngôn ngữ thiết kế của bản AI-First Redesign. Chấm đỏ đánh số tương ứng với ghi chú bên cạnh. Bấm “Thử trong prototype” để đi theo luồng.</p>
       </div>
       <div id="moments"></div>
     </section>
 
     <section id="prototype" class="proto wrap">
       <div class="stage-wrap">
-        <div class="flow">
+        <div class="flow glass">
           <h3>Prototype</h3>
           <p>Chạm vào các vùng có thể bấm trên màn hình để đi tiếp, hoặc chọn một bước bên dưới.</p>
           <ol id="flowList"></ol>
         </div>
         <div class="stage" id="stage"><div class="dev" id="stageDev"></div></div>
-        <div class="side-note" aria-live="polite">
+        <div class="side-note glass" aria-live="polite">
           <div class="now-m" id="nowMoment"></div>
           <h4 id="nowTitle"></h4>
+          <div class="rule"></div>
           <p id="nowWhy"></p>
           <div class="ctrls">
             <button type="button" id="prevBtn"><i class="ri-arrow-left-line"></i>Trước</button>
             <button type="button" class="pri" id="nextBtn">Tiếp<i class="ri-arrow-right-line"></i></button>
-            <button type="button" id="hintBtn" aria-pressed="false"><i class="ri-hand"></i>Hiện điểm chạm</button>
+            <button type="button" id="hintBtn" aria-pressed="false"><i class="ri-hand"></i>Điểm chạm</button>
             <button type="button" id="presentBtn" aria-pressed="false"><i class="ri-slideshow-3-line"></i><span>Trình chiếu</span></button>
           </div>
-          <p class="kbd">Phím mũi tên trái phải để chuyển màn hình.</p>
+          <p class="kbd">Phím mũi tên để chuyển màn hình. Esc để thoát trình chiếu.</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">Đề xuất nội bộ cho buổi review với team. Wireframe minh họa ý tưởng, chưa phải thiết kế cuối cùng. Số liệu là dữ liệu mẫu.</div>
+    <div class="wrap">Đề xuất nội bộ cho buổi review với team. Wireframe minh họa ý tưởng, chưa phải thiết kế cuối cùng. Số liệu là dữ liệu mẫu. Ngôn ngữ thiết kế và asset 3D từ bản Techcombank Mobile AI-First Redesign.</div>
   </footer>
 
   <script src="app.js"></script>
