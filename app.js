@@ -43,7 +43,7 @@ const MOMENTS = [
     doing: "Nhận lương từ Công ty B, mở app kiểm tra số dư.",
     feel: "“Lương về rồi, nhẹ cả người.”",
     pain: "Thông báo chỉ báo biến động số dư. Việc cần làm tiếp theo nằm trong đầu khách hàng.",
-    opp: ["Thông báo lương kèm sẵn kế hoạch chia tiền", "Home đổi sang trạng thái ngày lương", "Số tiền có thể chi thay cho số dư thô"],
+    opp: ["Thông báo lương kèm sẵn kế hoạch chia tiền", "Home giữ số dư lên đầu, thêm thẻ ngữ cảnh ngày lương", "Số tiền có thể chi hiện ngay dưới số dư"],
     now: 0.88, next: 0.92,
   },
   {
@@ -96,7 +96,7 @@ const SCREENS = [
     why: "Ngày lương là lúc khách hàng mở app nhiều nhất. Biến thông báo biến động số dư thành điểm bắt đầu của cả kế hoạch tháng.",
     tags: [["auto", "Auto-action"], ["ctx", "Contextual"]],
     notes: [
-      "Widget màn hình khóa hiển thị số tiền có thể chi đến kỳ lương sau, không phải số dư thô.",
+      "Widget màn hình khóa hiển thị số tiền có thể chi đến kỳ lương sau, bên cạnh số dư trong app.",
       "Thông báo lương có sẵn hai hành động. Kế hoạch chia lương tháng trước đã được chuẩn bị lại.",
     ],
     html: () => `
@@ -115,45 +115,44 @@ const SCREENS = [
   },
   {
     id: "home", m: 1, name: "Home ngày lương",
-    why: "Home thay đổi theo thời điểm trong tháng. Vào ngày lương, việc quan trọng nhất là phân bổ, nên thẻ lương chiếm vị trí số dư.",
+    why: "Home vẫn là app ngân hàng: số dư và các thao tác quen thuộc luôn ở trên cùng. Ngày lương chỉ thêm một lớp ngữ cảnh nhỏ bên dưới, không thay chỗ của số dư.",
     tags: [["ctx", "Contextual"], ["nav", "Self-service navigation"], ["ai", "AI xuyên suốt"]],
     notes: [
-      "Thẻ ngày lương: số tiền, nguồn và kế hoạch chia ngay trên một màn hình. Một chạm để xem lại.",
-      "Có thể chi: số dư trừ hóa đơn sắp tới và tiền tiết kiệm. Nút “Vì sao?” mở ra phép tính.",
-      "Dải tháng lương từ ngày 5 đến ngày 4, đánh dấu hóa đơn, kỳ thẻ và ưu đãi. Khách hàng luôn biết mình đang ở đâu.",
+      "Tổng số dư vẫn là thứ lớn nhất, có nút ẩn hiện. Bốn thao tác ngân hàng chính nằm ngay trong thẻ số dư.",
+      "Dòng phụ “Có thể chi đến 5/11” nằm dưới số dư. Đây là gợi ý thêm, không thay thế số dư. Nút “Vì sao?” mở ra phép tính.",
+      "Thẻ ngữ cảnh ngày lương: gọn, chỉ hiện vào ngày lương và tự ẩn sau khi chia xong. Một chạm để mở kế hoạch chia lương.",
+      "Dải tháng lương nhỏ phía dưới. Khách hàng biết mình đang ở đâu trong tháng và sắp phải trả gì.",
       "Thanh AI cố định trên tab bar. Gợi ý thay đổi theo ngày trong tháng.",
     ],
     html: () => `
       <div class="scr">${sb()}
         <div class="greet"><div class="ava">M</div><div class="grow"><div class="xs muted">Thứ Hai, 5/10</div><b>Chào Minh</b></div><i class="ri-search-line" style="font-size:21px"></i><i class="ri-notification-3-line" style="font-size:21px"></i></div>
-        <div class="body">
-          <div class="payday rel" data-go="split">${P(1)}
-            <span class="tagline"><i class="ri-sparkling-2-fill"></i>Lương đã về lúc 08:02</span>
-            <div class="amt">+18.500.000<sup>đ</sup></div>
-            <div class="xs" style="opacity:.75">Từ Công ty B, tài khoản lương ...4821</div>
-            <div class="split-bar"><i class="s1" style="flex:9"></i><i class="s2" style="flex:5"></i><i class="s3" style="flex:1.5"></i><i class="s4" style="flex:1"></i><i class="s5" style="flex:2"></i></div>
-            <div class="split-leg"><span style="--c:#8b93a7">Ngân hàng chính</span><span style="--c:#fff">Chi tiêu</span><span style="--c:#ffd34d">Du lịch</span><span style="--c:#9b8cff">Khẩn cấp</span><span style="--c:#e3262f">Thẻ</span></div>
-            <div class="go-row">Chia lương theo kế hoạch<em>1 chạm</em></div>
+        <div class="body" style="gap:10px">
+          <div class="bal rel">${P(1)}
+            <div class="row sp"><span class="xs bal-acc">Tài khoản thanh toán ...4821<i class="ri-arrow-down-s-line"></i></span><i class="ri-eye-line" style="font-size:18px;opacity:.8"></i></div>
+            <div class="xs" style="opacity:.7;margin-top:10px">Tổng số dư</div>
+            <div class="amt" style="font-size:32px">23.350.000<sup>đ</sup></div>
+            <div class="bal-safe rel">${P(2, "l")}<span>Có thể chi đến 5/11: <b>5.000.000đ</b></span><span class="why-chip" style="background:rgba(255,255,255,.14);color:#fff"><i class="ri-question-line"></i>Vì sao?</span></div>
+            <div class="bal-acts"><span><i class="ri-arrow-left-right-line"></i>Chuyển tiền</span><span data-go="qr"><i class="ri-qr-scan-2-line"></i>Quét QR</span><span><i class="ri-bill-line"></i>Hóa đơn</span><span><i class="ri-file-list-3-line"></i>Lịch sử</span></div>
           </div>
-          <div class="card rel">${P(2)}
-            <div class="row sp"><span class="sm muted">Có thể chi đến 5/11</span><span class="why-chip"><i class="ri-question-line"></i>Vì sao?</span></div>
-            <div class="row sp" style="align-items:flex-end"><div class="amt" style="font-size:24px">5.000.000<sup>đ</sup></div><span class="sm muted">≈ 161.000đ mỗi ngày</span></div>
+          <div class="pay-note rel" data-go="split">${P(3)}
+            <div class="ico" style="background:#fff;color:var(--red)"><i class="ri-hand-coin-line"></i></div>
+            <div class="grow"><b class="sm">Lương về +18.500.000đ</b><div class="xs muted">Kế hoạch chia lương đã sẵn sàng</div></div>
+            <span class="pn-btn">Chia lương</span>
           </div>
-          <div class="rel" style="padding:2px 2px 0">${P(3, "l")}
+          <div class="svc"><div><div class="ico"><i class="ri-safe-2-line"></i></div>Tiết kiệm</div><div><div class="ico"><i class="ri-bank-card-line"></i></div>Thẻ</div><div><div class="ico"><i class="ri-hand-coin-line"></i></div>Vay</div><div><div class="ico"><i class="ri-apps-2-line"></i></div>Tất cả</div></div>
+          <div class="rel" style="padding:2px 2px 0">${P(4, "l")}
             <div class="row sp sm"><b>Tháng lương của bạn</b><span class="muted xs" data-go="cal">Xem lịch</span></div>
             <div class="strip"><div class="done" style="width:3%"></div>
               <i class="d now" style="left:3%"></i><i class="d dbill" style="left:20%"></i><i class="d dbill" style="left:26%"></i><i class="d dcard" style="left:34%"></i><i class="d doffer" style="left:47%"></i><i class="d dbill" style="left:52%"></i><i class="d dbill" style="left:68%"></i><i class="d" style="left:99%"></i>
               <span class="lbl" style="left:4%">Hôm nay</span><span class="lbl" style="left:34%">Thẻ 15/10</span><span class="lbl" style="left:68%">Điện nước</span><span class="lbl" style="left:94%">Lương</span>
             </div>
           </div>
-          <div class="quick"><div><div class="ico"><i class="ri-arrow-left-right-line"></i></div>Chuyển tiền</div><div><div class="ico"><i class="ri-qr-code-line"></i></div>Quét QR</div><div><div class="ico"><i class="ri-bill-line"></i></div>Hóa đơn</div><div><div class="ico"><i class="ri-gift-line"></i></div>Ưu đãi</div></div>
         </div>
-        ${aiBar("“Chia lương giống tháng trước nhé”", P(4))}
+        ${aiBar("“Chia lương giống tháng trước nhé”", P(5))}
         ${tabs("home")}
       </div>`,
   },
-
-  /* ===== 2. Phân bổ ===== */
   {
     id: "split", m: 2, name: "Kế hoạch chia lương",
     why: "Thay 5 lệnh chuyển tiền lặp lại mỗi tháng bằng một kế hoạch. Mỗi dòng tự giải thích vì sao có con số đó.",

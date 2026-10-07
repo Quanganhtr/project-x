@@ -479,3 +479,18 @@ body.present .stage-wrap { min-height: 100vh; min-height: 100dvh; }
 body.present #presentBtn { background: var(--red); border-color: var(--red); color: #fff; }
 @media (max-height: 880px) { body.present .stage .dev { zoom: 0.88; } }
 @media (max-height: 790px) { body.present .stage .dev { zoom: 0.78; } }
+
+/* home: bank-first balance card */
+.bal { border-radius: 24px; padding: 14px 16px 12px; background: #1a1d24; color: #fff; }
+.bal-acc { display: inline-flex; align-items: center; gap: 2px; opacity: .85; font-weight: 600; }
+.bal .amt { margin-top: 2px; }
+.bal-safe { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,.14); font-size: 12px; }
+.bal-safe span:first-child { opacity: .85; }
+.bal-acts { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; margin-top: 12px; }
+.bal-acts span { display: grid; justify-items: center; gap: 5px; font-size: 11px; font-weight: 600; padding: 9px 2px; border-radius: 14px; background: rgba(255,255,255,.1); }
+.bal-acts i { font-size: 19px; }
+.pay-note { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 18px; background: #fff6dc; border: 1px solid #f3e1a6; cursor: pointer; }
+.pay-note .ico { width: 36px; height: 36px; border-radius: 11px; font-size: 18px; }
+.pn-btn { font-size: 12px; font-weight: 700; color: #fff; background: var(--red); padding: 7px 11px; border-radius: 10px; white-space: nowrap; }
+.svc { display: grid; grid-template-columns: repeat(4, 1fr); text-align: center; font-size: 11.5px; gap: 6px; }
+.svc .ico { margin: 0 auto 6px; }
