@@ -95,7 +95,7 @@ const MOMENTS = [
     doing: "Quét QR ăn uống, chuyển tiền cho gia đình, trả điện nước, internet, học phí.",
     feel: "“Ưu đãi ở đâu nhỉ? Hóa đơn này trả chưa?”",
     pain: "Ưu đãi tản mát nhiều nơi. Hóa đơn mỗi cái một chỗ. Chuyển tiền nhiều bước.",
-    opp: ["Bật tự động cho hóa đơn đang trả tay qua TCB", "QR có hoàn tiền và U-Point thấy ngay", "Lệnh bằng lời nói hoặc copy số tài khoản"],
+    opp: ["Bật tự động cho hóa đơn đang trả tay qua TCB", "Báo voucher khi tới cửa hàng đối tác, QR tự áp dụng", "Lệnh bằng lời nói hoặc copy số tài khoản"],
     leak: "Hóa đơn, ví điện tử và QR hằng ngày chưa gắn với TCB.",
     lever: "Biến thói quen hằng ngày tại TCB thành “mỏ neo”: hóa đơn tự động, QR có lợi, chuyển tiền gia đình nhanh.",
     now: 0.55, next: 0.8,
@@ -327,20 +327,83 @@ const SCREENS = [
           </div>
         </div>
         <div class="foot rel">${P(3, "in")}
-          <div class="btn" data-go="qr"><i class="ri-fingerprint-line"></i>Xác nhận bằng Face ID</div>
+          <div class="btn" data-go="nearby"><i class="ri-fingerprint-line"></i>Xác nhận bằng Face ID</div>
           <div class="row" style="gap:8px"><div class="btn ghost grow" style="height:48px">Sửa</div><div class="btn ghost grow" style="height:48px">Hủy</div></div>
         </div>
       </div>`,
   },
   {
-    id: "qr", m: 3, name: "QR kèm ưu đãi tại chỗ",
+    id: "nearby", m: 3, name: "Báo voucher khi tới nơi",
+    keep: "Mỗi lần thanh toán tại đối tác là một lần khách hàng chọn TCB tại quầy. Voucher báo đúng lúc là lý do cụ thể nhất để chọn TCB.",
+    why: "Ưu đãi chỉ có ích khi khách hàng biết trước lúc trả tiền. App báo ngay khi họ tới cửa hàng đối tác, thay vì bắt họ tự đi tìm. Cần quyền vị trí. App chỉ theo dõi vài điểm đối tác gần nhất có voucher của khách hàng, trong giới hạn hệ điều hành cho phép.",
+    tags: [["keep", "Giữ chân lương"], ["ctx", "Contextual"]],
+    notes: [
+      "Chỉ gửi khi khách hàng đang có voucher dùng được tại đúng nơi này. Tối đa một thông báo mỗi nơi mỗi ngày, không gửi vào giờ khuya.",
+      "“Mở QR thanh toán” mở thẳng máy quét, voucher đã gắn sẵn. Khách hàng không phải vào Home rồi đi tìm.",
+    ],
+    html: () => `
+      <div class="scr lock">${sb()}
+        <div class="lk-date">Thứ Bảy, 17 tháng 10</div>
+        <div class="lk-time">9:12</div>
+        <div class="lk-notif rel" data-go="homenear">${P(1)}
+          <div class="n-head"><span class="n-app"><img src="${LOGO}" alt=""></span><span>Techcombank</span><span class="n-time">bây giờ</span></div>
+          <div class="row" style="align-items:flex-start;gap:10px">
+            <div class="grow"><b>Bạn có voucher tại Highlands Coffee</b><p>Hoàn 15% khi quét QR Techcombank tại Vincom Bà Triệu. Dùng được đến 31/10.</p></div>
+            ${im("insight-coffee-3d.png", "", "width:46px;flex:none")}
+          </div>
+          <div class="n-acts rel">${P(2)}<span>Để sau</span><span data-go="qr">Mở QR thanh toán</span></div>
+        </div>
+        <div class="lk-bottom"><i class="ri-flashlight-fill"></i><i class="ri-camera-fill"></i></div>
+      </div>`,
+  },
+  {
+    id: "homenear", m: 3, name: "Home khi đang ở cửa hàng",
+    keep: "Home phản ứng với nơi khách hàng đang đứng. Lúc cần trả tiền, TCB là app được mở đầu tiên.",
+    why: "Khách hàng bỏ qua thông báo nhưng mở app tại quầy. Home đưa voucher của chính nơi này lên đầu để trả ngay, không cần tìm.",
+    tags: [["ctx", "Contextual"], ["keep", "Giữ chân lương"]],
+    notes: [
+      "Thẻ “Bạn đang ở Highlands Coffee” thay chỗ thẻ đầu tiên của “Dành cho bạn”, chỉ khi khách hàng đang ở điểm đối tác có voucher của họ.",
+      "Ô Quét QR được làm nổi. Một chạm là thanh toán với voucher đã gắn.",
+      "Rời khỏi cửa hàng thì thẻ tự ẩn, Home trở lại như bình thường.",
+    ],
+    html: () => `
+      <div class="scr">${sb()}${tbar()}
+        <div class="body" style="gap:12px">
+          <div class="bal-c">
+            <div class="lab">Số dư hiện tại</div>
+            <div class="amt"><span class="cur">VND</span>9,840,000<img src="assets/visibility.svg" alt=""></div>
+            <div class="safe"><i class="ri-seedling-line" style="color:#4ade80"></i>Sinh lời tự động: <b style="color:#4ade80">+1,210 hôm nay</b></div>
+            <span class="ins-pill" data-go="bins"><img src="${LOGO}" alt="">Insight</span>
+          </div>
+          <div class="acts rel">${P(2)}
+            <span>${im("banner-piggy.png")}Tiết kiệm</span><span>${im("action-transfer.png")}Chuyển tiền</span><span class="hl" data-go="qr">${im("action-qr.png")}Quét QR</span><span>${im("action-paybills.png")}Hóa đơn</span><span class="more"><i class="ri-arrow-right-line"></i></span>
+          </div>
+          <div class="feed-h">Dành cho bạn</div>
+          <div class="promo here rel" data-go="qr">${P(1)}
+            <div class="here-tag"><i class="ri-map-pin-2-fill"></i>Bạn đang ở Highlands Coffee</div>
+            <b>Voucher hoàn 15% đang chờ bạn</b>
+            <p>Quét QR Techcombank tại quầy, voucher tự áp dụng.</p>
+            <span class="pill k" style="margin-top:12px">Quét để dùng</span>${im("insight-coffee-3d.png", "")}
+          </div>
+          <div class="strip-card rel">${P(3, "l")}
+            <div class="row sp sm"><b>Tháng lương của bạn</b><span class="dim xs" data-go="cal">Xem lịch</span></div>
+            <div class="strip">
+              <i class="d dbill" style="left:20%"></i><i class="d dbill" style="left:26%"></i><i class="d dcard" style="left:34%"></i><i class="d now" style="left:41%"></i><i class="d dbill" style="left:52%"></i><i class="d dbill" style="left:68%"></i><i class="d" style="left:99%"></i>
+              <span class="lbl" style="left:41%">Hôm nay</span><span class="lbl" style="left:68%">Điện EVN</span><span class="lbl" style="left:94%">Lương</span>
+            </div>
+          </div>
+        </div>
+        ${bb()}
+      </div>`,
+  },
+  {
+    id: "qr", m: 3, name: "Quét QR, voucher tự áp dụng",
     keep: "QR là giao dịch có tần suất cao nhất. Mỗi lần trả bằng TCB phải có lợi thấy ngay: hoàn tiền và U-Point hiện trước khi trả.",
-    why: "Ưu đãi đang tản mát ở nhiều nơi. Đưa đúng ưu đãi vào đúng lúc thanh toán, khách hàng không cần đi tìm.",
+    why: "Màn quét QR chỉ có một việc: trả nhanh rồi thoát. Voucher đã được báo trước khi khách hàng tới quầy, nên ở đây chỉ cần tự áp dụng, không thêm gì để đọc hay bấm.",
     tags: [["ctx", "Contextual"], ["auto", "Auto-action"]],
     notes: [
-      "Nhận diện cửa hàng từ mã QR và vị trí. Ưu đãi phù hợp tự hiện trong luồng thanh toán.",
-      "Số tiền được hoàn và U-Point hiện trước khi trả. Lợi ích của việc trả bằng TCB hiện ngay ở đây.",
-      "Lối vào Growth hub: mọi ưu đãi và thử thách gom về một chỗ.",
+      "Cửa hàng được nhận diện từ mã VietQR. Voucher khách hàng đang có tại đây tự áp dụng, không cần chọn.",
+      "Số tiền được hoàn và U-Point hiện ngay cạnh số tiền phải trả. Một nút thanh toán, xong là thoát.",
     ],
     html: () => `
       <div class="scr">
@@ -353,7 +416,6 @@ const SCREENS = [
           <div class="offer rel">${P(1)}${im("banner-auto-earning-u.png", "")}<div class="grow"><b>Hoàn 15% khi trả bằng QR</b><div class="xs">Đã tự áp dụng. Kèm +55 U-Point.</div></div><i class="ri-checkbox-circle-fill" style="font-size:22px"></i></div>
           <div class="row sp sm rel" style="padding:0 4px">${P(2, "l")}<span style="color:#71717a">Bạn trả</span><span><s style="color:#a1a1aa">65,000</s> <b>55,250 VND</b></span></div>
           <div class="btn" data-go="cal">Thanh toán 55,250</div>
-          <div class="row sp sm rel" style="padding:2px 4px">${P(3, "l")}<span style="color:#71717a">12 ưu đãi khác gần bạn</span><b data-go="cal">Mở Growth hub</b></div>
         </div>
       </div>`,
   },
