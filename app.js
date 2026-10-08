@@ -72,19 +72,19 @@ const MOMENTS = [
     feel: "“Lương về rồi, nhẹ cả người.”",
     pain: "Thông báo chỉ báo biến động số dư. Việc cần làm tiếp theo nằm trong đầu khách hàng.",
     opp: ["Lương sinh lời tự động ngay khi về", "Thông báo nói rõ lợi ích ở lại, kèm kế hoạch lương", "Insight ngay dưới số dư, một chạm là thấy"],
-    leak: "Vài phút sau khi nhận lương, mở app ngân hàng chính và chuyển tiền đi.",
-    lever: "Cho thấy lợi ích ở lại trước khi khách hàng kịp mở app khác.",
+    leak: "Nhận lương, kiểm tra số dư rồi đóng app. Không có lý do để quay lại.",
+    lever: "Cho thấy lợi ích ngay từ thông báo lương đầu tiên.",
     now: 0.88, next: 0.92,
   },
   {
     n: 2, day: "Ngày 5–6", title: "Phân bổ",
-    desc: "Chuyển về ngân hàng chính, giữ lại để chi tiêu, trích tiết kiệm.",
+    desc: "Phân bổ lương cho chi tiêu, tiết kiệm và các mục tiêu.",
     caps: ["Savings & Goals"],
-    doing: "Chuyển phần lớn sang ngân hàng chính, giữ một khoản tại TCB, gửi tiết kiệm.",
+    doing: "Tự chia lương cho chi tiêu, tiết kiệm và các mục tiêu, mỗi tháng làm lại từ đầu.",
     feel: "“Lại phải chuyển tay từng khoản.”",
     pain: "Với khách hàng: làm lại nhiều lệnh mỗi tháng. Với TCB: lương chỉ đi qua, không ở lại.",
     opp: ["Kế hoạch lương mặc định giữ lại và sinh lời", "Mỗi đồng lương có chỗ và tự sinh lời", "Hũ tiết kiệm có lời nhắn cho người thân"],
-    leak: "Chuyển phần lớn lương sang ngân hàng chính, chỉ để lại một ít ở TCB.",
+    leak: "Lương không có kế hoạch, số dư nằm yên và không sinh lời.",
     lever: "Kế hoạch lương chia toàn bộ lương vào các hũ tại TCB, tất cả đều sinh lời.",
     now: 0.62, next: 0.9,
   },
@@ -96,7 +96,7 @@ const MOMENTS = [
     feel: "“Ưu đãi ở đâu nhỉ? Hóa đơn này trả chưa?”",
     pain: "Ưu đãi tản mát nhiều nơi. Hóa đơn mỗi cái một chỗ. Chuyển tiền nhiều bước.",
     opp: ["Bật tự động cho hóa đơn đang trả tay qua TCB", "QR có hoàn tiền và U-Point thấy ngay", "Lệnh bằng lời nói hoặc copy số tài khoản"],
-    leak: "Hóa đơn, ví điện tử, QR hằng ngày đều gắn với ngân hàng chính.",
+    leak: "Hóa đơn, ví điện tử và QR hằng ngày chưa gắn với TCB.",
     lever: "Biến thói quen hằng ngày tại TCB thành “mỏ neo”: hóa đơn tự động, QR có lợi, chuyển tiền gia đình nhanh.",
     now: 0.55, next: 0.8,
   },
@@ -108,7 +108,7 @@ const MOMENTS = [
     feel: "“Mình tiêu cái gì mà khiếp thế?”",
     pain: "Chỉ biết hết tiền khi đã hết. Thẻ tín dụng được chào bán không đúng lúc.",
     opp: ["Dự báo thiếu hụt trước 10 ngày", "3 phương án kèm hệ quả rõ ràng", "Thẻ TCB duyệt trước nhờ lịch sử lương"],
-    leak: "Dùng thẻ hoặc vay ở ngân hàng khác khi thiếu tiền.",
+    leak: "Thiếu tiền nhưng không có giải pháp ngay trong app TCB.",
     lever: "Lương ở lại càng lâu, hạn mức càng tốt. Thẻ trở thành lý do để ở lại.",
     now: 0.14, next: 0.62,
   },
@@ -270,7 +270,7 @@ const SCREENS = [
   /* ===== 3. Chi tiêu ===== */
   {
     id: "pay", m: 3, name: "Thanh toán thông minh",
-    keep: "Chuyển tiền cho gia đình và bạn bè là lý do lớn để mở app ngân hàng chính. Làm việc này nhanh nhất ở TCB thì không cần mở app khác.",
+    keep: "Chuyển tiền cho gia đình và bạn bè là việc làm hằng tuần. Khi việc này nhanh nhất ở TCB, TCB trở thành app khách hàng mở mỗi ngày.",
     why: "Chuyển tiền bắt đầu từ ý định, không phải từ form. Khách hàng nói hoặc dán, app hiểu và điền sẵn.",
     tags: [["ai", "AI xuyên suốt"], ["ctx", "Contextual"]],
     notes: [
@@ -446,7 +446,7 @@ const SCREENS = [
     why: "Thẻ tín dụng xuất hiện đúng lúc cần, với số tiền vừa đủ và giới hạn an toàn do chính khách hàng đặt.",
     tags: [["trust", "Trust & transparency"], ["ctx", "Contextual"]],
     notes: [
-      "Thẻ được đề xuất theo đúng khoản thiếu, duyệt trước nhờ 8 tháng lương về TCB. Lịch sử lương là lợi thế mà ngân hàng khác không có.",
+      "Thẻ được đề xuất theo đúng khoản thiếu, duyệt trước nhờ 8 tháng lương về TCB. Lịch sử lương là lợi thế riêng của TCB.",
       "Mô phỏng chi phí: trả đúng hạn thì 0đ lãi, trả chậm thì tốn bao nhiêu. Kéo để đổi số tiền.",
       "Giới hạn an toàn: tự đặt hạn mức chi mỗi tháng và cảnh báo khi chạm 80%.",
     ],
@@ -542,7 +542,7 @@ const SCREENS = [
   },
   {
     id: "insight", m: 5, name: "Kiểm soát chi tiêu",
-    keep: "Tiền tiết kiệm được dẫn vào hũ tại TCB, không ra ngoài. Kế hoạch tháng 11 giữ lại nhiều hơn tháng 10.",
+    keep: "Tiền tiết kiệm được dẫn vào hũ tại TCB. Kế hoạch tháng 11 giữ lại nhiều hơn tháng 10.",
     why: "Từ hiểu đến hành động. Gợi ý được áp dụng thẳng vào kế hoạch lương tháng sau, khép lại vòng lặp của hành trình.",
     tags: [["trust", "Trust & transparency"], ["auto", "Auto-action"], ["ai", "AI xuyên suốt"]],
     notes: [
@@ -629,7 +629,7 @@ function drawCurve() {
     s += '<path d="M' + ax + "," + (Y0 - 8) + " L" + x + "," + (yNew - 18) + '" stroke="#9aa3b2" fill="none" stroke-dasharray="2 4"/>';
   });
   // quote at the low point
-  s += '<text class="quote" x="' + (dayX(6) + 14) + '" y="' + val(0.3) + '">Lương về rồi đi: chuyển gần hết sang ngân hàng chính trong 1–2 ngày</text>';
+  s += '<text class="quote" x="' + (dayX(6) + 14) + '" y="' + val(0.3) + '">Lương về rồi đi: số dư giảm gần hết sau 1–2 ngày</text>';
   s += '<text class="ann" x="' + dayX(17) + '" y="' + (val(0.6) + 34) + '" text-anchor="middle">Chi tiêu, hóa đơn và hũ tiết kiệm vẫn diễn ra tại TCB</text>';
   svg.innerHTML = s;
   const np = document.getElementById("newPath");
@@ -657,7 +657,7 @@ function drawJourney() {
     ["Suy nghĩ", (m) => m.feel, "feel"],
     ["Cảm xúc", (m) => '<div class="emo-row">Hiện tại<span class="emo"><i style="width:' + m.now * 100 + '%"></i></span>Với đề xuất<span class="emo"><i style="width:' + m.next * 100 + '%"></i></span></div>', ""],
     ["Điểm đau hiện tại", (m) => m.pain, "pain"],
-    ["Lương rời TCB ở đâu", (m) => m.leak, "leak"],
+    ["Vì sao lương không ở lại", (m) => m.leak, "leak"],
     ["Đòn bẩy giữ chân", (m) => m.lever, "lever"],
     ["Cơ hội", (m) => "<ul>" + m.opp.map((o) => "<li>" + o + "</li>").join("") + "</ul>", "opp"],
     ["Capability", (m) => m.caps.join(", "), "cap"],
