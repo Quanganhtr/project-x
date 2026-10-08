@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500&display=swap" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=202610080850" />
+  <link rel="stylesheet" href="styles.css?v=202610080858" />
 </head>
 <body>
   <header class="top">
@@ -34,9 +34,9 @@
       <div class="hero-sub">
         <div class="glass persona">
           <div class="persona-face">M</div>
-          <p><b>Minh, 27 tuổi, nhân viên Công ty B</b>Nhận lương qua Techcombank vào ngày 5 hằng tháng. Với Minh, TCB hiện chỉ là tài khoản nhận lương. Persona: Dynamic Salary.</p>
+          <p><b>Minh, 27 tuổi, nhân viên Công ty B</b>Lương 12 triệu, nhận qua Techcombank vào ngày 5 hằng tháng. Không lập ngân sách, chưa có thói quen để dành. Với Minh, TCB hiện chỉ là tài khoản nhận lương. Persona: Dynamic Salary.</p>
         </div>
-        <div class="glass"><p>Chúng tôi không thiết kế lại cả app. Chúng tôi chọn 17 màn hình trên hành trình một tháng của Minh, để ở mỗi khoảnh khắc, để tiền ở TCB đều mang lại lợi ích thấy được.</p></div>
+        <div class="glass"><p>Chúng tôi không thiết kế lại cả app. Chúng tôi chọn 18 màn hình trên hành trình một tháng của Minh, để ở mỗi khoảnh khắc, để tiền ở TCB đều mang lại lợi ích thấy được.</p></div>
       </div>
     </section>
 
@@ -54,6 +54,7 @@
             <li><b>Không thấy lợi ích để ở.</b> Khách hàng không biết số dư ở TCB có thể tự sinh lời, ưu đãi thì tản mát.</li>
             <li><b>Tài khoản do công ty chọn.</b> Khách hàng xem TCB là “tài khoản nhận lương”, không phải ngân hàng của mình.</li>
             <li><b>Thói quen tháng nào cũng vậy.</b> Lương về là tiêu theo nếp cũ, không có khoảnh khắc nào khiến họ nghĩ đến TCB.</li>
+            <li><b>Lãi không đủ để đổi thói quen.</b> Với lương 12 triệu, số dư sinh lời chỉ khoảng 30 nghìn mỗi tháng. Lý do để ở phải là tiện và có lợi mỗi ngày, lãi chỉ là phần thêm.</li>
           </ol>
         </div>
         <div class="pb">
@@ -70,10 +71,10 @@
           <h3>Đề xuất này làm gì</h3>
           <p class="pb-sub">Không chặn tiền đi. Làm cho việc ở lại có lợi hơn.</p>
           <ol>
-            <li><b>Ngày lương:</b> lương tự sinh lời, kế hoạch lương mặc định giữ lại.</li>
+            <li><b>Ngày lương:</b> một câu hỏi để dành với số gợi ý sẵn. Phần còn lại tự sinh lời.</li>
             <li><b>Hằng ngày:</b> hóa đơn tự động, QR có lợi, chuyển tiền gia đình nhanh tại TCB.</li>
             <li><b>Cuối tháng:</b> thẻ TCB duyệt trước nhờ lịch sử lương.</li>
-            <li><b>Nhìn lại:</b> ghi nhận bao nhiêu lương đã ở lại và khách hàng nhận được gì.</li>
+            <li><b>Nhìn lại:</b> ghi nhận lợi ích đã nhận, và để dành phần dư cuối kỳ bằng một chạm.</li>
           </ol>
         </div>
       </div>
@@ -131,8 +132,8 @@
           <img src="assets/banner-piggy.png" alt="" />
           <h3>Một lần xác nhận</h3>
           <p class="votes">Auto-action, từ board ý tưởng</p>
-          <p>Việc lặp lại mỗi tháng được gom thành một kế hoạch. Khách hàng xem lại và xác nhận một lần, không phải nhập lại từng lệnh.</p>
-          <p class="seen">Xuất hiện ở: Thông báo lương, Chia lương, Lịch tài chính</p>
+          <p>Không bắt khách hàng lập kế hoạch. Mỗi việc chỉ là một câu hỏi với một gợi ý tốt được chọn sẵn, và một chạm để đồng ý.</p>
+          <p class="seen">Xuất hiện ở: Để dành tháng này, Hóa đơn, Để dành phần dư</p>
         </div>
         <div class="pr">
           <img src="assets/insight-icon.png" alt="" />
@@ -146,7 +147,7 @@
 
     <section id="screens" class="sec wrap">
       <div class="sec-head">
-        <h2>17 màn hình trên hành trình</h2>
+        <h2>18 màn hình trên hành trình</h2>
         <p>Kích thước 375 × 812, theo ngôn ngữ thiết kế của bản AI-First Redesign. Chấm đỏ đánh số tương ứng với ghi chú bên cạnh. Bấm “Thử trong prototype” để đi theo luồng.</p>
       </div>
       <div id="moments"></div>
@@ -166,7 +167,7 @@
         <div class="mt">
           <h3>Chỉ số hỗ trợ</h3>
           <ul>
-            <li>Tỷ lệ bật kế hoạch lương tự động</li>
+            <li>Tỷ lệ chọn để dành ở ngày lương, và tỷ lệ vẫn giữ sau 3 kỳ lương</li>
             <li>Số dư bình quân trong 7 ngày sau ngày lương</li>
             <li>Tỷ lệ khách hàng bật tự động thanh toán ít nhất một hóa đơn qua TCB</li>
             <li>Số giao dịch QR và chi tiêu qua TCB mỗi tháng</li>
@@ -186,7 +187,8 @@
           <ul>
             <li>Số dư lương thực tế còn lại sau 48 giờ và sau 7 ngày</li>
             <li>Lý do chính khiến lương không ở lại TCB</li>
-            <li>Mức lãi hoặc ưu đãi nào đủ để đổi thói quen</li>
+            <li>Mức để dành gợi ý nào được chấp nhận nhiều nhất: 4%, 8% hay 16% lương</li>
+            <li>Lợi ích nào giữ chân khách hàng mass tốt hơn: hoàn tiền, U-Point hay lãi</li>
             <li>Khách hàng đang dùng những ví điện tử và hóa đơn tự động nào</li>
           </ul>
         </div>
@@ -223,6 +225,6 @@
     <div class="wrap">Đề xuất nội bộ cho buổi review với team. Wireframe minh họa ý tưởng, chưa phải thiết kế cuối cùng. Số liệu là dữ liệu mẫu. Ngôn ngữ thiết kế và asset 3D từ bản Techcombank Mobile AI-First Redesign.</div>
   </footer>
 
-  <script src="app.js?v=202610080850"></script>
+  <script src="app.js?v=202610080858"></script>
 </body>
 </html>
