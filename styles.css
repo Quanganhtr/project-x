@@ -596,3 +596,9 @@ body.present .stage-wrap { min-height: 100vh; min-height: 100dvh; }
 .sw-hero p { margin: 0; font-size: 13px; color: #52525b; }
 .sw-row { display: flex; justify-content: space-between; font-size: 13px; padding: 12px 14px; border-radius: 20px; background: #f4f4f5; }
 .sw-row s { color: #a1a1aa; }
+
+.rest2 { display: grid; gap: 10px; padding: 12px; border-radius: 28px; background: var(--raised); border: 1px solid var(--line); }
+.rest2 .d3 { width: 38px; height: 38px; }
+.rest2 b { font-size: 13.5px; }
+.rest2 .sg { padding: 12px 14px; border-radius: 20px; background: rgba(139, 92, 246, 0.14); border: 1px solid rgba(139, 92, 246, 0.35); }
+.opts .o { padding: 13px 16px; }

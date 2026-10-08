@@ -204,11 +204,10 @@ const SCREENS = [
     why: "Khách hàng mass không lập kế hoạch tài chính, và bắt họ chia lương vào nhiều hũ ngay ngày lương là một rào cản. Màn này thay cả bản kế hoạch bằng đúng một câu hỏi, với một con số gợi ý sẵn.",
     tags: [["idea", "Ý tưởng mới"], ["keep", "Giữ chân lương"], ["auto", "Auto-action"]],
     notes: [
-      "Một câu hỏi thay cho một bản kế hoạch. Khách hàng không cần biết mình chi bao nhiêu mỗi tháng.",
+      "Một câu hỏi thay cho một bản kế hoạch. Khách hàng không cần biết mình chi bao nhiêu mỗi tháng. Kế hoạch lớn dần theo dữ liệu thật: tháng 1 một câu hỏi, từ tháng 2 gợi ý theo chi tiêu tại TCB, mục tiêu có tên đến sau.",
       "Con số gợi ý được chọn sẵn, khoảng 8% lương, đủ nhỏ để không ảnh hưởng chi tiêu. Phần lớn người dùng sẽ giữ lựa chọn mặc định.",
-      "Phần còn lại không cần chia đi đâu. Nó ở trong tài khoản, tự sinh lời và chi tiêu được ngay.",
-      "Lặp lại mỗi kỳ lương được bật sẵn. “Lương tăng thì để dành thêm 1%” là lựa chọn tự nguyện, để thói quen lớn dần mà không đau.",
-      "Kế hoạch lớn dần theo dữ liệu thật. Tháng 1 chỉ một câu hỏi. Từ tháng 2, app gợi ý dựa trên chi tiêu thật tại TCB. Mục tiêu có tên đến sau, khi thói quen đã có.",
+      "Phần còn lại được chia theo thời điểm cần dùng tiền. Phần chưa cần trước ngày 20 được gợi ý gửi tiết kiệm linh hoạt, lãi cao hơn và rút về ngay khi cần. Tháng đầu chưa có dữ liệu, app giữ lại nhiều để khách hàng không bị thiếu. Từ tháng 2, con số tính từ hóa đơn và chi tiêu thật tại TCB.",
+      "Lặp lại mỗi kỳ lương được bật sẵn, nên từ tháng sau khách hàng không phải quyết định lại.",
     ],
     html: () => `
       <div class="scr">${sb()}${back("home", "Để dành tháng này")}
@@ -223,12 +222,14 @@ const SCREENS = [
             <div class="o"><b>2,000,000</b><span>khoảng 16% lương</span></div>
             <div class="o"><b>Số khác</b><span>tự nhập</span></div>
           </div>
-          <div class="rest rel">${P(3)}${im("insight-wallet.png")}<div class="grow"><b>11,000,000 còn lại ở tài khoản</b><div class="xs muted">Tự sinh lời mỗi ngày, chi tiêu bất cứ lúc nào</div></div></div>
-          <div class="card rel" style="display:grid;gap:12px">${P(4)}
-            <div class="row sp"><span class="sm">Lặp lại mỗi kỳ lương</span><span class="toggle"></span></div>
-            <div class="row sp"><span class="sm">Lương tăng thì để dành thêm 1%</span><span class="toggle off"></span></div>
+          <div class="rest2 rel">${P(3)}
+            <div class="row">${im("insight-wallet.png")}<div class="grow"><b>11,000,000 còn lại</b><div class="xs muted">Dùng cho hóa đơn và chi tiêu trong tháng</div></div></div>
+            <div class="sg">
+              <div class="row" style="gap:8px;align-items:flex-start"><img src="${LOGO}" alt="" style="width:18px;margin-top:2px"><div><b class="sm">5,000,000 trong số này bạn chưa cần tới trước ngày 20</b><div class="xs muted" style="margin-top:3px">Gửi tiết kiệm linh hoạt để lãi cao hơn để trong tài khoản. Cần thì rút về ngay, không mất lãi đã có.</div></div></div>
+              <div class="row" style="gap:6px;margin-top:10px"><span class="chip hot">Gửi 5,000,000</span><span class="chip">Để trong tài khoản</span></div>
+            </div>
           </div>
-          <div class="ladder rel">${P(5, "l")}<span class="on">Tháng 1: một câu hỏi</span><span>Tháng 2: gợi ý theo chi tiêu</span><span>Tháng 3: đặt mục tiêu</span></div>
+          <div class="card row sp rel" style="padding:12px 16px">${P(4)}<span class="sm">Lặp lại mỗi kỳ lương</span><span class="toggle"></span></div>
         </div>
         <div class="foot">
           <div class="btn" data-go="splitdone">Để dành 1,000,000</div>
@@ -242,9 +243,10 @@ const SCREENS = [
     why: "Khép lại bằng một kết quả dễ hiểu và một dự phóng ngắn. Đặt tên mục tiêu là tùy chọn, và là nơi phần cảm xúc xuất hiện.",
     tags: [["emo", "Emotional & personal"], ["auto", "Auto-action"]],
     notes: [
-      "Kết quả là một con số và một dự phóng ngắn: giữ nhịp này thì sau 3 tháng có bao nhiêu.",
+      "Kết quả là một con số và một dự phóng ngắn. Khi khoản để dành đủ lớn, app gợi ý bước tiếp theo: tiết kiệm có kỳ hạn. Đầu tư chỉ được gợi ý sau khi khách hàng đã có quỹ dự phòng.",
       "Đặt tên không bắt buộc. Gợi ý tên quen thuộc để khách hàng chạm một lần là xong.",
       "Khoản để dành cho người thân có thể kèm lời nhắn. Đây là phần cảm xúc mà team đã vote.",
+      "Ngay sau lần để dành đầu tiên, app mời một cam kết nhỏ cho tương lai: lương tăng thì để dành thêm 1%. Tự nguyện, tắt bất cứ lúc nào.",
     ],
     html: () => `
       <div class="scr">${sb()}
@@ -254,12 +256,14 @@ const SCREENS = [
           <div class="keepc rel">${P(1)}
             <div class="row"><div class="grow"><div class="xs" style="opacity:.7">Giữ nhịp này, tới tháng 12</div><b style="font-size:22px">3,000,000</b></div>${im("banner-auto-earning-u.png")}</div>
             <div class="bar" style="background:rgba(0,0,0,.15)"><i style="width:33%;background:#000"></i></div>
+            <div class="xs" style="opacity:.75">Khi đủ 3,000,000, app gợi ý chuyển sang tiết kiệm có kỳ hạn để lãi cao hơn.</div>
           </div>
           <div class="card rel" style="display:grid;gap:10px">${P(2)}
             <b class="sm">Đặt tên cho khoản này <span class="dim" style="font-weight:400">(không bắt buộc)</span></b>
             <div class="row" style="flex-wrap:wrap;gap:6px"><span class="chip">Quỹ khẩn cấp</span><span class="chip">Du lịch</span><span class="chip hot">Mừng cưới em Linh</span><span class="chip">+ Tên khác</span></div>
           </div>
           <div class="note-card rel">${P(3)}<i class="ri-mail-heart-line"></i>“Chị để dành từng tháng cho ngày vui của em.” Lời nhắn sẽ được gửi cùng quà.</div>
+          <div class="card row sp rel" style="padding:12px 16px">${P(4)}<div><b class="sm">Lương tăng thì để dành thêm 1%</b><div class="xs muted">Thói quen lớn dần mà không thấy hụt</div></div><span class="toggle off"></span></div>
         </div>
         <div class="foot"><div class="btn" data-go="pay">Về trang chủ</div></div>
       </div>`,
